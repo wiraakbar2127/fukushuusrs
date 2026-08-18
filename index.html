@@ -3000,7 +3000,107 @@
       }
     }
 
-  </style>
+  
+    .mastery-celebration {
+      position: fixed;
+      inset: 0;
+      z-index: 999;
+      display: none;
+      align-items: center;
+      justify-content: center;
+      background: rgba(255,255,255,.72);
+      backdrop-filter: blur(4px);
+      cursor: pointer;
+    }
+
+    .mastery-celebration.show {
+      display: flex;
+      animation: celebrationFade .2s ease;
+    }
+
+    .celebration-card {
+      position: relative;
+      width: min(360px, 85vw);
+      padding: 28px 24px;
+      overflow: hidden;
+      text-align: center;
+      border-radius: 24px;
+      background: #fff;
+      border: 2px solid #ffb45c;
+      box-shadow: 0 16px 45px rgba(130,70,0,.18);
+      animation: celebrationPop .35s ease;
+    }
+
+    .celebration-kanji {
+      font-size: 64px;
+      font-weight: 900;
+      color: #ff7a00;
+      animation: kanjiCelebrate .7s infinite alternate;
+    }
+
+    .celebration-title {
+      margin-top: 10px;
+      font-size: 20px;
+      font-weight: 900;
+      color: #7b3900;
+    }
+
+    .celebration-sub {
+      margin-top: 8px;
+      font-size: 14px;
+      color: #9b7655;
+    }
+
+    .celebration-hint {
+      margin-top: 14px;
+      font-size: 11px;
+      color: #aa896d;
+    }
+
+    .confetti-layer {
+      position: absolute;
+      inset: 0;
+      overflow: hidden;
+      pointer-events:none;
+    }
+
+    .confetti-layer span {
+      position:absolute;
+      top:-20px;
+      width:8px;
+      height:14px;
+      background:#ff8a00;
+      animation: fall 1.2s linear infinite;
+    }
+
+    .confetti-layer span:nth-child(1){left:10%;animation-delay:.1s}
+    .confetti-layer span:nth-child(2){left:22%;animation-delay:.3s;background:#ffc15c}
+    .confetti-layer span:nth-child(3){left:35%;animation-delay:.2s}
+    .confetti-layer span:nth-child(4){left:50%;animation-delay:.5s;background:#ffd27f}
+    .confetti-layer span:nth-child(5){left:67%;animation-delay:.1s}
+    .confetti-layer span:nth-child(6){left:82%;animation-delay:.4s;background:#ffb13b}
+
+    @keyframes fall {
+      from {transform:translateY(-10px) rotate(0);opacity:1}
+      to {transform:translateY(300px) rotate(500deg);opacity:0}
+    }
+
+    @keyframes celebrationPop {
+      from {transform:scale(.7)}
+      to {transform:scale(1)}
+    }
+
+    @keyframes celebrationFade {
+      from {opacity:0}
+      to {opacity:1}
+    }
+
+    @keyframes kanjiCelebrate {
+      from {transform:scale(1)}
+      to {transform:scale(1.15)}
+    }
+
+</style>
 </head>
 <body>
   <nav>
