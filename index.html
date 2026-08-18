@@ -2110,6 +2110,12 @@
       white-space: nowrap;
     }
 
+    /* Header dan isi lima kolom utama dibuat benar-benar sejajar di tengah. */
+    #vocab .vocab-table th:nth-child(-n+5),
+    #vocab .vocab-table td:nth-child(-n+5) {
+      text-align: center;
+    }
+
     #vocab .row-actions {
       gap: 8px;
     }
@@ -4228,14 +4234,523 @@
   .paste-confirm-actions .btn { width:100%; }
 }
 
+
+/* ===== Minimalist vocab actions + multi-select ===== */
+.vocab-toolbar-actions { display:flex; align-items:center; gap:7px; flex:0 0 auto; }
+.icon-btn {
+  width:36px; height:36px; min-width:36px; padding:0; border:1px solid #ead8c8; border-radius:11px;
+  background:#fffdfb; color:#765b47; display:inline-grid; place-items:center; cursor:pointer;
+  transition:background .15s ease, border-color .15s ease, transform .15s ease, color .15s ease;
+}
+.icon-btn:hover { background:#fff6ed; border-color:#efc49e; color:#b85a0b; transform:translateY(-1px); }
+.icon-btn:active { transform:translateY(0); }
+.icon-btn.danger { color:#b84c45; background:#fffafa; border-color:#efd3d0; }
+.icon-btn.danger:hover { background:#fff1ef; border-color:#e7aaa4; color:#a9362f; }
+.icon-btn.active { color:#fff; background:linear-gradient(135deg,var(--orange),var(--orange-2)); border-color:transparent; box-shadow:0 6px 15px rgba(255,122,0,.18); }
+.icon-btn svg { width:17px; height:17px; display:block; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+.toolbar-icon-btn { width:40px; height:40px; min-width:40px; border-radius:12px; }
+#vocab #resetButton { min-height:40px !important; padding:0 !important; }
+#vocab #selectModeButton { min-height:40px; padding:0; }
+#vocab .row-actions { justify-content:center; gap:5px; }
+#vocab .row-btn { width:32px; height:32px; min-width:32px; padding:0; border-radius:9px; display:inline-grid; place-items:center; }
+#vocab .row-btn svg { width:15px; height:15px; stroke:currentColor; fill:none; stroke-width:1.8; stroke-linecap:round; stroke-linejoin:round; }
+#vocab .row-btn.edit { color:#9a581e; background:#fffaf5; border-color:#ecd7c3; }
+#vocab .row-btn.reset-one { color:#5d6c79; background:#fbfcfd; border-color:#d9e0e5; }
+#vocab .row-btn.delete { color:#b84c45; background:#fffafa; border-color:#efd3d0; }
+#vocab .vocab-table th, #vocab .vocab-table td { text-align:center; }
+#vocab .vocab-table th.action-head { width:118px; }
+#vocab .vocab-table th.select-head, #vocab .vocab-table td.select-cell { width:42px; padding-left:6px; padding-right:6px; }
+.vocab-select-checkbox { appearance:none; -webkit-appearance:none; width:18px; height:18px; margin:0; border:1.6px solid #d5b99f; border-radius:6px; background:#fff; display:inline-grid; place-items:center; cursor:pointer; vertical-align:middle; }
+.vocab-select-checkbox:checked { background:var(--orange); border-color:var(--orange); }
+.vocab-select-checkbox:checked::after { content:""; width:7px; height:4px; border-left:2px solid #fff; border-bottom:2px solid #fff; transform:rotate(-45deg) translate(1px,-1px); }
+.bulk-actions { margin:-2px 0 10px; min-height:44px; padding:6px 9px 6px 14px; border:1px solid #efd7c1; border-radius:13px; background:#fffaf5; align-items:center; justify-content:space-between; gap:10px; }
+.bulk-actions:not([hidden]) { display:flex; }
+.bulk-selected-count { font-size:12px; font-weight:900; color:#815c3d; }
+.bulk-action-buttons { display:flex; gap:6px; }
+.bulk-action-buttons .icon-btn { width:34px; height:34px; min-width:34px; }
+/* Tombol Jawab dibuat lebih dekat dan lebih kecil */
+.answer-actions { margin-top:4px !important; display:flex !important; justify-content:center; }
+#answerButton { width:auto !important; min-width:104px; min-height:34px !important; padding:7px 18px !important; border-radius:10px !important; font-size:12px !important; box-shadow:0 6px 14px rgba(255,122,0,.15); }
+.study-card .feedback { margin:4px 0 0 !important; min-height:18px !important; line-height:18px !important; }
+@media (max-width:700px) {
+  .vocab-toolbar-actions { gap:5px; }
+  .toolbar-icon-btn { width:38px; height:38px; min-width:38px; }
+  #vocab .row-btn { width:30px; height:30px; min-width:30px; }
+  .bulk-actions { margin-bottom:8px; }
+  #answerButton { min-width:96px; min-height:32px !important; padding:6px 16px !important; font-size:11px !important; }
+}
+
+
+/* ===== Vocab table readability + flexible action icons ===== */
+#vocab .hero h1 {
+  font-size: clamp(26px, 3.2vw, 38px) !important;
+  line-height: 1.05;
+}
+
+#vocab .hero .pill {
+  font-size: 12px !important;
+  padding: 7px 10px !important;
+}
+
+#vocab .table-wrap {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+#vocab .vocab-table {
+  width: 100%;
+  table-layout: fixed;
+}
+
+#vocab .vocab-table th {
+  font-size: clamp(12px, 1.15vw, 15px) !important;
+  line-height: 1.2;
+  padding: 10px 7px !important;
+}
+
+#vocab .vocab-table td {
+  font-size: clamp(13px, 1.25vw, 17px) !important;
+  line-height: 1.25;
+  padding: 10px 7px !important;
+}
+
+#vocab .table-kanji {
+  width: 15%;
+  font-size: clamp(28px, 3.1vw, 40px) !important;
+  font-weight: 900;
+}
+
+#vocab .table-furigana {
+  width: 20%;
+  font-size: clamp(14px, 1.5vw, 19px) !important;
+}
+
+#vocab .table-meaning {
+  width: 24%;
+  font-size: clamp(14px, 1.45vw, 18px) !important;
+}
+
+#vocab .table-progress {
+  width: 12%;
+  font-size: clamp(13px, 1.25vw, 16px) !important;
+  font-weight: 850;
+}
+
+#vocab .table-srs {
+  width: 12%;
+  font-size: clamp(13px, 1.25vw, 16px) !important;
+}
+
+/* Kolom aksi wajib punya ruang sendiri dan tidak boleh memotong ikon */
+#vocab .vocab-table th.action-head,
+#vocab .vocab-table td:last-child {
+  width: 17% !important;
+  min-width: 0 !important;
+  padding-left: 4px !important;
+  padding-right: 4px !important;
+  overflow: visible !important;
+  text-overflow: clip !important;
+  white-space: nowrap !important;
+}
+
+#vocab .row-actions {
+  width: 100% !important;
+  min-width: 0 !important;
+  display: grid !important;
+  grid-template-columns: repeat(3, minmax(26px, 34px));
+  justify-content: center !important;
+  align-items: center !important;
+  gap: clamp(3px, .5vw, 7px) !important;
+  overflow: visible !important;
+}
+
+#vocab .row-btn {
+  width: clamp(28px, 3vw, 34px) !important;
+  height: clamp(28px, 3vw, 34px) !important;
+  min-width: 0 !important;
+  max-width: 34px;
+  padding: 0 !important;
+  border-radius: 9px !important;
+  justify-self: center;
+  overflow: visible;
+}
+
+#vocab .row-btn svg {
+  width: clamp(14px, 1.45vw, 17px) !important;
+  height: clamp(14px, 1.45vw, 17px) !important;
+}
+
+/* Mode pilih tetap muat tanpa mendorong kolom aksi keluar tabel */
+#vocab .vocab-table th.select-head,
+#vocab .vocab-table td.select-cell {
+  width: 38px !important;
+  padding-left: 3px !important;
+  padding-right: 3px !important;
+}
+
+@media (max-width: 760px) {
+  #vocab .hero h1 {
+    font-size: 24px !important;
+  }
+
+  #vocab .vocab-table th {
+    font-size: 11px !important;
+    padding: 8px 4px !important;
+  }
+
+  #vocab .vocab-table td {
+    font-size: 12px !important;
+    padding: 8px 4px !important;
+  }
+
+  #vocab .table-kanji {
+    font-size: 24px !important;
+  }
+
+  #vocab .table-furigana,
+  #vocab .table-meaning {
+    font-size: 12px !important;
+  }
+
+  #vocab .table-progress,
+  #vocab .table-srs {
+    font-size: 11px !important;
+  }
+
+  #vocab .vocab-table th.action-head,
+  #vocab .vocab-table td:last-child {
+    width: 18% !important;
+  }
+
+  #vocab .row-actions {
+    grid-template-columns: repeat(3, minmax(24px, 30px));
+    gap: 2px !important;
+  }
+
+  #vocab .row-btn {
+    width: 28px !important;
+    height: 28px !important;
+  }
+
+  #vocab .row-btn svg {
+    width: 14px !important;
+    height: 14px !important;
+  }
+}
+
+@media (max-width: 520px) {
+  #vocab .table-kanji { width: 15%; }
+  #vocab .table-furigana { width: 18%; }
+  #vocab .table-meaning { width: 23%; }
+  #vocab .table-progress { width: 13%; }
+  #vocab .table-srs { width: 13%; }
+
+  #vocab .vocab-table th.action-head,
+  #vocab .vocab-table td:last-child {
+    width: 18% !important;
+  }
+
+  #vocab .row-actions {
+    grid-template-columns: repeat(3, 25px);
+    gap: 1px !important;
+  }
+
+  #vocab .row-btn {
+    width: 25px !important;
+    height: 25px !important;
+    border-radius: 7px !important;
+  }
+
+  #vocab .row-btn svg {
+    width: 13px !important;
+    height: 13px !important;
+  }
+}
+
+/* ===== Vocab typography enlargement ===== */
+#vocab .vocab-table th {
+  font-size: clamp(15px, 1.45vw, 18px) !important;
+  font-weight: 950 !important;
+}
+#vocab .table-kanji {
+  font-size: clamp(34px, 4vw, 48px) !important;
+  line-height: 1.08 !important;
+}
+@media (max-width: 760px) {
+  #vocab .vocab-table th {
+    font-size: 13px !important;
+  }
+  #vocab .table-kanji {
+    font-size: 29px !important;
+  }
+}
+@media (max-width: 520px) {
+  #vocab .vocab-table th {
+    font-size: 12px !important;
+  }
+  #vocab .table-kanji {
+    font-size: 27px !important;
+  }
+}
+
+
+/* ===== FINAL Vocab proportion + real Kanji font fix ===== */
+/* Beri sedikit ruang setelah input sebelum tombol Jawab. */
+.answer-actions {
+  margin-top: 10px !important;
+}
+#answerButton {
+  min-width: 108px !important;
+}
+
+/* Lebarkan kanvas hanya ketika halaman Kumpulan Kosakata aktif. */
+main:has(#vocab.page.active) {
+  width: min(1200px, calc(100% - 22px));
+}
+
+#vocab .table-wrap {
+  width: 100% !important;
+  max-width: 100% !important;
+}
+
+#vocab .vocab-table {
+  width: 100% !important;
+  table-layout: fixed !important;
+}
+
+/* Proporsi kolom dibuat eksplisit lewat header agar fixed-table benar-benar mengikuti ukuran ini. */
+#vocab .vocab-table th.kanji-head { width: 18% !important; }
+#vocab .vocab-table th.furigana-head { width: 20% !important; }
+#vocab .vocab-table th.meaning-head { width: 25% !important; }
+#vocab .vocab-table th.progress-head { width: 12% !important; }
+#vocab .vocab-table th.srs-head { width: 10% !important; }
+#vocab .vocab-table th.action-head { width: 15% !important; }
+
+/* Selector ini sengaja lebih spesifik daripada aturan td sebelumnya.
+   Jadi ukuran Kanji benar-benar diterapkan, bukan tertimpa font-size td !important. */
+#vocab .vocab-table tbody td.table-kanji {
+  font-size: clamp(42px, 4.6vw, 58px) !important;
+  font-weight: 950 !important;
+  line-height: 1.05 !important;
+  letter-spacing: .01em;
+  padding-top: 12px !important;
+  padding-bottom: 12px !important;
+}
+
+#vocab .vocab-table tbody td {
+  height: 76px;
+}
+
+/* Sel lain tetap proporsional terhadap Kanji yang lebih besar. */
+#vocab .vocab-table tbody td.table-furigana {
+  font-size: clamp(15px, 1.55vw, 20px) !important;
+}
+#vocab .vocab-table tbody td.table-meaning {
+  font-size: clamp(14px, 1.45vw, 18px) !important;
+}
+
+@media (max-width: 760px) {
+  .answer-actions { margin-top: 8px !important; }
+  main:has(#vocab.page.active) { width: calc(100% - 14px); }
+  #vocab .vocab-table tbody td { height: 66px; }
+  #vocab .vocab-table tbody td.table-kanji {
+    font-size: 34px !important;
+    padding-top: 9px !important;
+    padding-bottom: 9px !important;
+  }
+}
+
+
+
+/* ===== FINAL balance: study card height + smaller vocab Kanji ===== */
+/* Kartu soal diringkas secara vertikal supaya tinggi tiap bagian lebih seimbang. */
+#study .study-card {
+  width: min(840px, 100%) !important;
+  padding: 14px 22px 14px !important;
+}
+#study .study-meta {
+  min-height: 16px !important;
+}
+#study .answer-reveal {
+  min-height: 24px !important;
+  margin: 1px 0 0 !important;
+}
+#study .kanji-wrap {
+  min-height: 78px !important;
+  padding: 2px 6px !important;
+}
+#study .meaning-display {
+  min-height: 21px !important;
+  margin: 1px 0 4px !important;
+}
+#study .progress-row {
+  margin: 4px 0 !important;
+}
+#study .bar {
+  margin-bottom: 8px !important;
+}
+#study .answer-input {
+  min-height: 48px !important;
+  padding: 10px 15px !important;
+}
+#study .answer-actions {
+  margin-top: 7px !important;
+}
+#study #answerButton {
+  min-height: 38px !important;
+  padding: 8px 16px !important;
+}
+#study .feedback {
+  min-height: 18px !important;
+  margin: 4px 0 0 !important;
+}
+#study .stats {
+  margin-top: 8px !important;
+}
+
+/* Kanji pada Kumpulan Kosakata diperkecil dari versi sebelumnya. */
+#vocab .vocab-table tbody td.table-kanji {
+  font-size: clamp(36px, 3.9vw, 48px) !important;
+  line-height: 1.06 !important;
+  padding-top: 9px !important;
+  padding-bottom: 9px !important;
+}
+#vocab .vocab-table tbody td {
+  height: 68px !important;
+}
+
+@media (max-width: 760px) {
+  #study .study-card {
+    padding: 12px 14px 12px !important;
+  }
+  #study .kanji-wrap {
+    min-height: 70px !important;
+  }
+  #study .answer-input {
+    min-height: 44px !important;
+  }
+  #vocab .vocab-table tbody td {
+    height: 60px !important;
+  }
+  #vocab .vocab-table tbody td.table-kanji {
+    font-size: 30px !important;
+    padding-top: 7px !important;
+    padding-bottom: 7px !important;
+  }
+}
+
+
+/* ===== FINAL requested: restore study proportions, trim only bottom space ===== */
+/* Kembalikan proporsi kartu soal seperti versi sebelum dipendekkan. */
+#study .study-card {
+  width: min(900px, 100%) !important;
+  padding: 20px 28px 9px !important;
+}
+#study .study-meta {
+  min-height: unset !important;
+}
+#study .answer-reveal {
+  min-height: 34px !important;
+  margin: 2px 0 8px !important;
+}
+#study .kanji-wrap {
+  min-height: 112px !important;
+  padding: 7px 6px !important;
+}
+#study .meaning-display {
+  min-height: 31px !important;
+  margin: 9px 0 13px !important;
+}
+#study .progress-row {
+  margin: 8px 0 8px !important;
+}
+#study .bar {
+  margin-bottom: 18px !important;
+}
+#study .answer-input {
+  min-height: unset !important;
+  padding: 16px 18px !important;
+}
+#study .answer-actions {
+  margin-top: 14px !important;
+}
+#study #answerButton {
+  min-height: 34px !important;
+  padding: 7px 18px !important;
+}
+#study .feedback {
+  min-height: 18px !important;
+  margin: 4px 0 0 !important;
+}
+#study .stats {
+  margin: 0 auto !important;
+}
+
+/* Kanji pada Kumpulan Kosakata: tepat 20px. */
+#vocab .vocab-table tbody td.table-kanji {
+  font-size: 20px !important;
+  line-height: 1.2 !important;
+  padding-top: 8px !important;
+  padding-bottom: 8px !important;
+}
+#vocab .vocab-table tbody td {
+  height: 58px !important;
+}
+
+@media (max-width: 760px) {
+  #study .study-card {
+    padding: 18px 18px 8px !important;
+  }
+  #study .kanji-wrap {
+    min-height: 104px !important;
+    padding: 6px !important;
+  }
+  #study .answer-input {
+    padding: 14px 16px !important;
+  }
+  #vocab .vocab-table tbody td.table-kanji {
+    font-size: 20px !important;
+  }
+}
+
+
+/* Navigasi utama: ikon minimalis */
+.nav-btn.nav-icon-btn {
+  width: 44px;
+  height: 44px;
+  padding: 0 !important;
+  display: inline-grid;
+  place-items: center;
+  flex: 0 0 44px;
+}
+
+.nav-btn.nav-icon-btn svg {
+  width: 21px;
+  height: 21px;
+  fill: currentColor;
+  display: block;
+}
+
+@media (max-width: 640px) {
+  .nav-btn.nav-icon-btn {
+    width: 40px;
+    height: 40px;
+    flex-basis: 40px;
+  }
+  .nav-btn.nav-icon-btn svg {
+    width: 20px;
+    height: 20px;
+  }
+}
 </style>
 </head>
 <body>
 <div id="resetConfirmModal" class="reset-confirm-modal">
   <div class="reset-confirm-box">
-    <div class="reset-confirm-title">Reset Progress?</div>
-    <div class="reset-confirm-text">
-      Semua progress belajar, SRS, dan hitungan latihan akan dihapus.
+    <div class="reset-confirm-title" id="resetConfirmTitle">Reset Progress?</div>
+    <div class="reset-confirm-text" id="resetConfirmText">
+      Semua progress belajar akan kembali ke 0/75, termasuk 15 ketikan pada setiap 5 tahap SRS.
     </div>
     <div class="reset-confirm-actions">
       <button id="resetCancelBtn" class="reset-no">Batal</button>
@@ -4256,9 +4771,15 @@
       </div>
 
       <div class="nav-menu" aria-label="Navigasi">
-        <button class="nav-btn active" data-page="study">復習</button>
-        <button class="nav-btn" data-page="upload">Upload Soal</button>
-        <button class="nav-btn" data-page="vocab">漢字一覧</button>
+        <button class="nav-btn nav-icon-btn active" data-page="study" type="button" aria-label="Soal" title="Soal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5.5A2.5 2.5 0 0 1 6.5 3H11v16H6.5A2.5 2.5 0 0 0 4 21.5v-16Zm16 0A2.5 2.5 0 0 0 17.5 3H13v16h4.5A2.5 2.5 0 0 1 20 21.5v-16Z"/></svg>
+        </button>
+        <button class="nav-btn nav-icon-btn" data-page="upload" type="button" aria-label="Upload Soal" title="Upload Soal">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3 7.5 7.5l1.4 1.4L11 6.8V15h2V6.8l2.1 2.1 1.4-1.4L12 3ZM5 13v6h14v-6h2v8H3v-8h2Z"/></svg>
+        </button>
+        <button class="nav-btn nav-icon-btn" data-page="vocab" type="button" aria-label="Kumpulan Kanji" title="Kumpulan Kanji">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 4h6v6H4V4Zm10 0h6v6h-6V4ZM4 14h6v6H4v-6Zm10 0h6v6h-6v-6Z"/></svg>
+        </button>
       </div>
     </div>
   </nav>
@@ -4297,11 +4818,11 @@
           aria-label="Ketik Jawaban"
         />
 
-        <div id="feedback" class="feedback"></div>
-
-        <div class="actions">
+        <div class="actions answer-actions">
           <button id="answerButton" class="btn btn-primary">Jawab</button>
         </div>
+
+        <div id="feedback" class="feedback"></div>
       </div>
 
       <div class="stats">
@@ -4424,7 +4945,19 @@ Atau paste beberapa kosakata sekaligus."
 
       <div class="toolbar">
         <input id="searchInput" class="search" type="search" placeholder="Cari kanji, furigana, atau arti..." />
-        <button id="resetButton" class="btn btn-danger">Reset progress</button>
+        <div class="vocab-toolbar-actions">
+          <button id="resetButton" class="icon-btn toolbar-icon-btn danger" type="button" title="Reset semua progress" aria-label="Reset semua progress"></button>
+          <button id="deleteAllButton" class="icon-btn toolbar-icon-btn danger" type="button" title="Hapus semua kosakata" aria-label="Hapus semua kosakata"></button>
+          <button id="selectModeButton" class="icon-btn toolbar-icon-btn" type="button" title="Pilih beberapa kosakata" aria-label="Pilih beberapa kosakata"></button>
+        </div>
+      </div>
+
+      <div id="bulkActions" class="bulk-actions" hidden>
+        <span id="bulkSelectedCount" class="bulk-selected-count">0 dipilih</span>
+        <div class="bulk-action-buttons">
+          <button id="bulkResetButton" class="icon-btn" type="button" title="Reset kosakata terpilih" aria-label="Reset kosakata terpilih"></button>
+          <button id="bulkDeleteButton" class="icon-btn danger" type="button" title="Hapus kosakata terpilih" aria-label="Hapus kosakata terpilih"></button>
+        </div>
       </div>
 
       <div id="vocabGrid" class="vocab-grid"></div>
@@ -4478,7 +5011,9 @@ Atau paste beberapa kosakata sekaligus."
         .map(item => ({
           kanji: String(item?.kanji ?? "").trim(),
           furigana: String(item?.furigana ?? item?.answer ?? "").trim(),
-          meaning: String(item?.meaning ?? item?.arti ?? "").trim()
+          meaning: String(item?.meaning ?? item?.arti ?? "").trim(),
+          srsLevel: Math.min(5, Math.max(0, Number(item?.srsLevel) || 0)),
+          nextReview: Math.max(0, Number(item?.nextReview) || 0)
         }))
         .filter(item => item.kanji && item.furigana && item.meaning);
     }
@@ -4497,6 +5032,8 @@ Atau paste beberapa kosakata sekaligus."
     }
 
     const TARGET = 15;
+    const SRS_TARGET = 5;
+    const TOTAL_TARGET = TARGET * SRS_TARGET; // 5 SRS × 15 ketikan = 75
     const PROGRESS_KEY = "wiraKanjiFukushuuProgressV2";
 
     let progress = loadProgress();
@@ -4508,6 +5045,46 @@ Atau paste beberapa kosakata sekaligus."
     let LIST_PAGE_SIZE = 6;
 
     const $ = (id) => document.getElementById(id);
+
+    let vocabSelectMode = false;
+    let selectedVocabIndices = new Set();
+
+    function iconSvg(name) {
+      const icons = {
+        edit: `<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4 14.5V17h2.5L15.8 7.7l-2.5-2.5L4 14.5Z"></path><path d="m12.8 4.2 2.5 2.5"></path></svg>`,
+        reset: `<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.2 7.2A6.2 6.2 0 1 1 4 13"></path><path d="M4.2 3.7v3.6h3.6"></path></svg>`,
+        delete: `<svg viewBox="0 0 20 20" aria-hidden="true"><path d="M4.5 6h11"></path><path d="M8 3.8h4"></path><path d="M6.2 6l.6 10h6.4l.6-10"></path><path d="M8.5 8.5v5"></path><path d="M11.5 8.5v5"></path></svg>`,
+        select: `<svg viewBox="0 0 20 20" aria-hidden="true"><rect x="3.5" y="3.5" width="13" height="13" rx="3"></rect><path d="m6.8 10 2.1 2.1 4.5-4.5"></path></svg>`,
+        close: `<svg viewBox="0 0 20 20" aria-hidden="true"><path d="m6 6 8 8"></path><path d="m14 6-8 8"></path></svg>`
+      };
+      return icons[name] || "";
+    }
+
+    let pendingResetAction = null;
+
+    function closeResetConfirm() {
+      $("resetConfirmModal")?.classList.remove("show");
+      pendingResetAction = null;
+    }
+
+    function openResetConfirm(action, options = {}) {
+      pendingResetAction = typeof action === "function" ? action : null;
+      if ($("resetConfirmTitle")) $("resetConfirmTitle").textContent = options.title || "Reset Progress?";
+      if ($("resetConfirmText")) $("resetConfirmText").textContent = options.text || "Semua progress belajar akan kembali ke 0/75, termasuk 15 ketikan pada setiap 5 tahap SRS.";
+      if ($("resetConfirmBtn")) $("resetConfirmBtn").textContent = options.confirmText || "Reset";
+      $("resetConfirmModal")?.classList.add("show");
+    }
+
+    $("resetCancelBtn")?.addEventListener("click", closeResetConfirm);
+    $("resetConfirmModal")?.addEventListener("click", event => {
+      if (event.target === $("resetConfirmModal")) closeResetConfirm();
+    });
+    $("resetConfirmBtn")?.addEventListener("click", () => {
+      const action = pendingResetAction;
+      $("resetConfirmModal")?.classList.remove("show");
+      pendingResetAction = null;
+      if (action) action();
+    });
 
     function vocabKey(vocab) {
       return `${vocab.kanji}|${vocab.furigana}`;
@@ -4530,10 +5107,18 @@ Atau paste beberapa kosakata sekaligus."
       return Math.max(0, Math.min(TARGET, Number(progress[vocabKey(vocab)]) || 0));
     }
 
+    function totalTypingProgress(vocab) {
+      return Math.min(TOTAL_TARGET, (getSRSLevel(vocab) * TARGET) + score(vocab));
+    }
+
+    function isFullyMastered(vocab) {
+      return getSRSLevel(vocab) >= SRS_TARGET;
+    }
+
     function remainingIndexes() {
       return VOCABULARIES
         .map((_, index) => index)
-        .filter(index => score(VOCABULARIES[index]) < TARGET);
+        .filter(index => !isFullyMastered(VOCABULARIES[index]));
     }
 
     function pickNextIndex() {
@@ -4576,7 +5161,7 @@ Atau paste beberapa kosakata sekaligus."
         currentAttempt = 1;
       }
 
-      const mastered = VOCABULARIES.filter(v => score(v) >= TARGET).length;
+      const mastered = VOCABULARIES.filter(isFullyMastered).length;
       $("totalStat").textContent = VOCABULARIES.length;
       $("masteredStat").textContent = mastered;
       $("remainingStat").textContent = VOCABULARIES.length - mastered;
@@ -4587,7 +5172,7 @@ Atau paste beberapa kosakata sekaligus."
         $("kanjiDisplay").classList.remove("idle-motion", "anim-correct", "anim-wrong");
         applyMasteryVisual(0);
         $("answerReveal").innerHTML = "";
-        $("meaningDisplay").textContent = "Semua kosakata sudah mencapai 15/15";
+        $("meaningDisplay").textContent = "Semua kosakata selesai · SRS 5/5 · 75/75 ketikan";
         $("answerInput").value = "";
         $("answerInput").disabled = true;
         $("answerButton").disabled = true;
@@ -4884,11 +5469,18 @@ Atau paste beberapa kosakata sekaligus."
       if (given === expected) {
         playAnswerAnimation(true);
 
-        const newScore = Math.min(TARGET, score(vocab) + 1);
+        let newScore = Math.min(TARGET, score(vocab) + 1);
         progress[vocabKey(vocab)] = newScore;
 
-        if (newScore >= TARGET) {
+        const completedRound = newScore >= TARGET;
+        const completedRoundScore = newScore;
+        if (completedRound) {
           setSRSLevel(vocab, getSRSLevel(vocab) + 1);
+          // Setiap SRS memiliki 15 ketikan sendiri. Setelah 15/15,
+          // progress putaran kembali ke 0 untuk SRS berikutnya.
+          progress[vocabKey(vocab)] = 0;
+          newScore = 0;
+          saveVocabularies();
         }
 
         saveProgress();
@@ -4896,12 +5488,13 @@ Atau paste beberapa kosakata sekaligus."
         $("feedback").textContent = "";
         $("feedback").className = "feedback";
 
-        $("wordProgressText").textContent = `${newScore} / ${TARGET}`;
-        $("wordProgressFill").style.width = `${(newScore / TARGET) * 100}%`;
-        $("masteryBadge").textContent = `${newScore} / ${TARGET}`;
-        applyMasteryVisual(newScore);
+        const visibleRoundScore = completedRound ? completedRoundScore : newScore;
+        $("wordProgressText").textContent = `${visibleRoundScore} / ${TARGET}`;
+        $("wordProgressFill").style.width = `${(visibleRoundScore / TARGET) * 100}%`;
+        $("masteryBadge").textContent = `${visibleRoundScore} / ${TARGET}`;
+        applyMasteryVisual(visibleRoundScore);
 
-        const mastered = VOCABULARIES.filter(v => score(v) >= TARGET).length;
+        const mastered = VOCABULARIES.filter(isFullyMastered).length;
         $("masteredStat").textContent = mastered;
         $("remainingStat").textContent = VOCABULARIES.length - mastered;
 
@@ -4926,7 +5519,7 @@ Atau paste beberapa kosakata sekaligus."
           }
         }, 180);
 
-        if (newScore >= TARGET) {
+        if (completedRound) {
           answered = true;
 
           // Perayaan muncul langsung. Lanjut setelah Enter / sentuh layar.
@@ -4955,8 +5548,8 @@ Atau paste beberapa kosakata sekaligus."
         const newScore = Math.max(0, score(vocab) - 1);
         progress[vocabKey(vocab)] = newScore;
 
-        setSRSLevel(vocab, Math.max(0, getSRSLevel(vocab) - 1));
-
+        // Jawaban salah mengurangi progress pada putaran 15 ketikan saat ini,
+        // tetapi tidak menghapus SRS yang sudah selesai.
         saveProgress();
 
         $("feedback").textContent = "";
@@ -4967,7 +5560,7 @@ Atau paste beberapa kosakata sekaligus."
         $("masteryBadge").textContent = `${newScore} / ${TARGET}`;
         applyMasteryVisual(newScore);
 
-        const mastered = VOCABULARIES.filter(v => score(v) >= TARGET).length;
+        const mastered = VOCABULARIES.filter(isFullyMastered).length;
         $("masteredStat").textContent = mastered;
         $("remainingStat").textContent = VOCABULARIES.length - mastered;
 
@@ -5348,7 +5941,15 @@ Atau paste beberapa kosakata sekaligus."
       renderStudy();
       renderVocabularyPage($("searchInput").value);
       closePasteConfirm();
-      setAutoPasteStatus(`${VOCABULARIES.length} kosakata sudah menjadi soal.`, "good");
+
+      // Setelah hasil AI dikonfirmasi, bersihkan seluruh area Copy Paste.
+      // Saat kembali ke halaman Upload, user mendapat halaman kosong dan siap paste baru.
+      $("pasteVocabulary").value = "";
+      pasteDraftVocabularies = [];
+      renderPasteConfirm();
+      setAutoPasteStatus("Menunggu teks ditempel · Gemini siap dianalisis...", "");
+
+      // Langsung masuk ke halaman soal.
       document.querySelector('[data-page="study"]')?.click();
     });
     const SRS_INTERVALS = [
@@ -5365,7 +5966,7 @@ Atau paste beberapa kosakata sekaligus."
     }
 
     function setSRSLevel(vocab, level) {
-      vocab.srsLevel = Math.min(5, Math.max(0, level));
+      vocab.srsLevel = Math.min(SRS_TARGET, Math.max(0, level));
       vocab.nextReview = Date.now() + 
         (SRS_INTERVALS[vocab.srsLevel] || 0) * 86400000;
     }
@@ -5373,7 +5974,7 @@ Atau paste beberapa kosakata sekaligus."
     function srsBadge(level) {
       return `
         <span class="srs-badge srs-level-${level}">
-          SRS ${level}/5
+          SRS ${level}/${SRS_TARGET}
         </span>`;
     }
 
@@ -5502,6 +6103,57 @@ Atau paste beberapa kosakata sekaligus."
       return pageSize;
     }
 
+    function syncSelectionToolbar() {
+      const selectButton = $("selectModeButton");
+      const bulk = $("bulkActions");
+      const count = $("bulkSelectedCount");
+      if (selectButton) {
+        selectButton.classList.toggle("active", vocabSelectMode);
+        selectButton.title = vocabSelectMode ? "Selesai memilih" : "Pilih beberapa kosakata";
+        selectButton.setAttribute("aria-label", selectButton.title);
+        selectButton.innerHTML = iconSvg(vocabSelectMode ? "close" : "select");
+      }
+      if (bulk) bulk.hidden = !vocabSelectMode;
+      if (count) count.textContent = `${selectedVocabIndices.size} dipilih`;
+      if ($("bulkResetButton")) $("bulkResetButton").disabled = selectedVocabIndices.size === 0;
+      if ($("bulkDeleteButton")) $("bulkDeleteButton").disabled = selectedVocabIndices.size === 0;
+    }
+
+    function exitSelectionMode() {
+      vocabSelectMode = false;
+      selectedVocabIndices.clear();
+      syncSelectionToolbar();
+      renderVocabularyPage($("searchInput").value);
+    }
+
+    function resetVocabularyNow(index) {
+      const vocab = VOCABULARIES[index];
+      if (!vocab) return;
+      delete progress[vocabKey(vocab)];
+      vocab.srsLevel = 0;
+      vocab.nextReview = 0;
+      saveProgress();
+      saveVocabularies();
+      if (currentIndex === index) {
+        currentAttempt = 1;
+        answered = false;
+      }
+    }
+
+    function resetVocabulary(index) {
+      const vocab = VOCABULARIES[index];
+      if (!vocab) return;
+      openResetConfirm(() => {
+        resetVocabularyNow(index);
+        renderVocabularyPage($("searchInput").value);
+        renderStudy();
+      }, {
+        title: `Ulang ${vocab.kanji}?`,
+        text: `Progress ${vocab.kanji} akan dikembalikan ke 0/75 dan SRS 0/5. Kosakatanya tetap ada di daftar.`,
+        confirmText: "Ulang dari 0"
+      });
+    }
+
     function renderVocabularyPage(query = "") {
       const q = query.trim().toLowerCase();
 
@@ -5514,6 +6166,7 @@ Atau paste beberapa kosakata sekaligus."
         );
 
       $("listCount").textContent = `${filtered.length} kata`;
+      syncSelectionToolbar();
 
       if (!filtered.length) {
         $("vocabGrid").innerHTML = `<div class="card empty">${VOCABULARIES.length ? "Tidak ada kosakata yang cocok." : "Belum ada kosakata. Tambahkan soal terlebih dahulu."}</div>`;
@@ -5525,27 +6178,30 @@ Atau paste beberapa kosakata sekaligus."
           <table class="vocab-table">
             <thead>
               <tr>
-                <th>漢字</th>
-                <th>ふりがな</th>
-                <th>Arti</th>
-                <th>Progress</th><th>SRS</th>
-                <th></th>
+                ${vocabSelectMode ? '<th class="select-head" aria-label="Pilih"></th>' : ''}
+                <th class="kanji-head">漢字</th>
+                <th class="furigana-head">ふりがな</th>
+                <th class="meaning-head">Arti</th>
+                <th class="progress-head">Progress</th><th class="srs-head">SRS</th>
+                <th class="action-head" aria-label="Aksi"></th>
               </tr>
             </thead>
             <tbody>
               ${filtered.map(({ v, index }) => {
-                const s = score(v);
+                const s = totalTypingProgress(v);
                 return `
                   <tr>
+                    ${vocabSelectMode ? `<td class="select-cell"><input class="vocab-select-checkbox" type="checkbox" data-select-index="${index}" ${selectedVocabIndices.has(index) ? "checked" : ""} aria-label="Pilih ${escapeHtml(v.kanji)}"></td>` : ''}
                     <td class="table-kanji" title="${escapeHtml(v.kanji)}">${escapeHtml(v.kanji)}</td>
                     <td class="table-furigana" title="${escapeHtml(v.furigana)}">${escapeHtml(v.furigana)}</td>
                     <td class="table-meaning" title="${escapeHtml(v.meaning)}">${escapeHtml(v.meaning)}</td>
-                    <td class="table-progress">${s} / ${TARGET}</td>
+                    <td class="table-progress">${s} / ${TOTAL_TARGET}</td>
                     <td class="table-srs">${srsBadge(getSRSLevel(v))}</td>
                     <td>
                       <div class="row-actions">
-                        <button class="row-btn edit" data-edit-index="${index}">Edit</button>
-                        <button class="row-btn delete" data-delete-index="${index}">Hapus</button>
+                        <button class="row-btn edit" data-edit-index="${index}" type="button" title="Edit" aria-label="Edit ${escapeHtml(v.kanji)}">${iconSvg("edit")}</button>
+                        <button class="row-btn reset-one" data-reset-index="${index}" type="button" title="Ulang dari 0" aria-label="Reset ${escapeHtml(v.kanji)} dari 0">${iconSvg("reset")}</button>
+                        <button class="row-btn delete" data-delete-index="${index}" type="button" title="Hapus" aria-label="Hapus ${escapeHtml(v.kanji)}">${iconSvg("delete")}</button>
                       </div>
                     </td>
                   </tr>`;
@@ -5558,8 +6214,21 @@ Atau paste beberapa kosakata sekaligus."
         button.addEventListener("click", () => openEdit(Number(button.dataset.editIndex)));
       });
 
+      document.querySelectorAll("[data-reset-index]").forEach(button => {
+        button.addEventListener("click", () => resetVocabulary(Number(button.dataset.resetIndex)));
+      });
+
       document.querySelectorAll("[data-delete-index]").forEach(button => {
         button.addEventListener("click", () => deleteVocabulary(Number(button.dataset.deleteIndex)));
+      });
+
+      document.querySelectorAll("[data-select-index]").forEach(checkbox => {
+        checkbox.addEventListener("change", () => {
+          const index = Number(checkbox.dataset.selectIndex);
+          if (checkbox.checked) selectedVocabIndices.add(index);
+          else selectedVocabIndices.delete(index);
+          syncSelectionToolbar();
+        });
       });
     }
 
@@ -5586,25 +6255,38 @@ Atau paste beberapa kosakata sekaligus."
     function deleteVocabulary(index) {
       const vocab = VOCABULARIES[index];
       if (!vocab) return;
-      if (!confirm(`Hapus ${vocab.kanji} dari daftar?`)) return;
 
-      const oldKey = vocabKey(vocab);
-      delete progress[oldKey];
-      saveProgress();
+      openResetConfirm(() => {
+        const oldKey = vocabKey(vocab);
+        delete progress[oldKey];
+        saveProgress();
 
-      VOCABULARIES.splice(index, 1);
-      saveVocabularies();
+        VOCABULARIES.splice(index, 1);
+        saveVocabularies();
 
-      if (currentIndex === index) {
-        currentIndex = pickNextIndex();
-        currentAttempt = 1;
-      } else if (currentIndex > index) {
-        currentIndex -= 1;
-      }
+        const remapped = new Set();
+        selectedVocabIndices.forEach(i => {
+          if (i < index) remapped.add(i);
+          else if (i > index) remapped.add(i - 1);
+        });
+        selectedVocabIndices = remapped;
 
-      renderVocabularyPage($("searchInput").value);
-      renderStudy();
+        if (currentIndex === index) {
+          currentIndex = pickNextIndex();
+          currentAttempt = 1;
+        } else if (currentIndex > index) {
+          currentIndex -= 1;
+        }
+
+        renderVocabularyPage($("searchInput").value);
+        renderStudy();
+      }, {
+        title: `Hapus ${vocab.kanji}?`,
+        text: `Kosakata ${vocab.kanji} beserta seluruh progress belajarnya akan dihapus dari daftar.`,
+        confirmText: "Hapus"
+      });
     }
+
 
     $("cancelEdit").addEventListener("click", closeEdit);
 
@@ -5627,8 +6309,16 @@ Atau paste beberapa kosakata sekaligus."
       const oldVocab = VOCABULARIES[editingIndex];
       const oldKey = vocabKey(oldVocab);
       const oldScore = score(oldVocab);
+      const oldSrsLevel = getSRSLevel(oldVocab);
+      const oldNextReview = Number(oldVocab.nextReview || 0);
 
-      VOCABULARIES[editingIndex] = { kanji, furigana, meaning };
+      VOCABULARIES[editingIndex] = {
+        kanji,
+        furigana,
+        meaning,
+        srsLevel: oldSrsLevel,
+        nextReview: oldNextReview
+      };
       const newKey = vocabKey(VOCABULARIES[editingIndex]);
 
       if (oldKey !== newKey) {
@@ -5647,16 +6337,112 @@ Atau paste beberapa kosakata sekaligus."
       renderVocabularyPage(event.target.value);
     });
 
+    $("resetButton").innerHTML = iconSvg("reset");
+    $("deleteAllButton").innerHTML = iconSvg("delete");
+    $("bulkResetButton").innerHTML = iconSvg("reset");
+    $("bulkDeleteButton").innerHTML = iconSvg("delete");
+    syncSelectionToolbar();
+
+    $("selectModeButton").addEventListener("click", () => {
+      if (vocabSelectMode) {
+        exitSelectionMode();
+        return;
+      }
+      vocabSelectMode = true;
+      selectedVocabIndices.clear();
+      syncSelectionToolbar();
+      renderVocabularyPage($("searchInput").value);
+    });
+
+
+    $("bulkResetButton").addEventListener("click", () => {
+      const indices = [...selectedVocabIndices].filter(index => VOCABULARIES[index]);
+      if (!indices.length) return;
+      openResetConfirm(() => {
+        indices.forEach(resetVocabularyNow);
+        selectedVocabIndices.clear();
+        saveProgress();
+        saveVocabularies();
+        syncSelectionToolbar();
+        renderVocabularyPage($("searchInput").value);
+        renderStudy();
+      }, {
+        title: `Ulang ${indices.length} kosakata?`,
+        text: `${indices.length} kosakata terpilih akan dikembalikan ke Progress 0/75 dan SRS 0/5. Kosakatanya tetap ada.`,
+        confirmText: "Ulang dari 0"
+      });
+    });
+
+    $("bulkDeleteButton").addEventListener("click", () => {
+      const indices = [...selectedVocabIndices].filter(index => VOCABULARIES[index]).sort((a, b) => b - a);
+      if (!indices.length) return;
+      openResetConfirm(() => {
+        const currentKey = VOCABULARIES[currentIndex] ? vocabKey(VOCABULARIES[currentIndex]) : null;
+        indices.forEach(index => {
+          const vocab = VOCABULARIES[index];
+          if (!vocab) return;
+          delete progress[vocabKey(vocab)];
+          VOCABULARIES.splice(index, 1);
+        });
+        saveProgress();
+        saveVocabularies();
+        selectedVocabIndices.clear();
+        if (currentKey) currentIndex = VOCABULARIES.findIndex(v => vocabKey(v) === currentKey);
+        if (currentIndex < 0) currentIndex = pickNextIndex();
+        currentAttempt = 1;
+        syncSelectionToolbar();
+        renderVocabularyPage($("searchInput").value);
+        renderStudy();
+      }, {
+        title: `Hapus ${indices.length} kosakata?`,
+        text: `${indices.length} kosakata terpilih beserta seluruh progress belajarnya akan dihapus dari daftar.`,
+        confirmText: "Hapus"
+      });
+    });
+
     $("resetButton").addEventListener("click", () => {
       openResetConfirm(() => {
         progress = {};
+        VOCABULARIES.forEach(vocab => {
+          vocab.srsLevel = 0;
+          vocab.nextReview = 0;
+        });
         saveProgress();
+        saveVocabularies();
         currentIndex = pickNextIndex();
         currentAttempt = 1;
         renderVocabularyPage($("searchInput").value);
         renderStudy();
+      }, {
+        title: "Reset semua progress?",
+        text: "Semua kosakata akan kembali ke Progress 0/75 dan SRS 0/5. Daftar kosakata tidak akan dihapus.",
+        confirmText: "Reset semua"
       });
     });
+
+    $("deleteAllButton").addEventListener("click", () => {
+      if (!VOCABULARIES.length) return;
+      openResetConfirm(() => {
+        progress = {};
+        VOCABULARIES = [];
+        selectedVocabIndices.clear();
+        vocabSelectMode = false;
+        saveProgress();
+        saveVocabularies();
+        currentIndex = -1;
+        currentAttempt = 1;
+        answered = false;
+        listPage = 1;
+        syncSelectionToolbar();
+        renderVocabularyPage($("searchInput").value);
+        renderStudy();
+      }, {
+        title: "Hapus semua kosakata?",
+        text: "Seluruh kosakata beserta semua progress 0/75 dan data SRS akan dihapus permanen dari daftar.",
+        confirmText: "Hapus semua"
+      });
+    });
+
 
     function escapeHtml(text) {
       return String(text)
@@ -5683,19 +6469,7 @@ Atau paste beberapa kosakata sekaligus."
     currentAttempt = 1;
     renderStudy();
     renderVocabularyPage();
-  
-document.querySelectorAll('[id*="reset"],[id*="Reset"]').forEach(btn => {
-  if (!btn.dataset.confirmResetAttached) {
-    btn.dataset.confirmResetAttached = "true";
-    const original = btn.onclick;
-    btn.onclick = function(e) {
-      e.preventDefault();
-      openResetConfirm(() => {
-        if (typeof original === "function") original.call(btn,e);
-      });
-    };
-  }
-});
+
 
 </script>
 
