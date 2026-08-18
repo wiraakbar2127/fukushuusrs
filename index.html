@@ -2855,6 +2855,151 @@
         box-shadow .12s ease;
     }
 
+
+    /* ======================================================
+       DUAL INPUT: JSON FILE / COPY PASTE
+       ====================================================== */
+
+    .dual-upload-card {
+      width: min(900px, 100%);
+      margin: 0 auto;
+      padding: 22px;
+    }
+
+    .upload-mode-switch {
+      width: min(520px, 100%);
+      margin: 0 auto 18px;
+      padding: 5px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 5px;
+      border: 1px solid #efcfb2;
+      border-radius: 14px;
+      background: #fff7ef;
+    }
+
+    .upload-mode-btn {
+      min-height: 42px;
+      border: 0;
+      border-radius: 10px;
+      background: transparent;
+      color: #9a6841;
+      font: inherit;
+      font-size: 13px;
+      font-weight: 900;
+      cursor: pointer;
+      transition: .16s ease;
+    }
+
+    .upload-mode-btn:hover {
+      background: rgba(255,122,0,.07);
+      color: #a64d00;
+    }
+
+    .upload-mode-btn.active {
+      color: white;
+      background: linear-gradient(135deg, var(--orange), var(--orange-2));
+      box-shadow: 0 6px 16px rgba(255,122,0,.18);
+    }
+
+    .upload-panel {
+      display: none;
+    }
+
+    .upload-panel.active {
+      display: block;
+    }
+
+    .paste-format-title {
+      margin-bottom: 8px;
+      text-align: center;
+      color: #8b674b;
+      font-size: 12px;
+      font-weight: 850;
+    }
+
+    .paste-format-example {
+      width: fit-content;
+      max-width: 100%;
+      margin: 0 auto 13px;
+      padding: 8px 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 10px;
+      border: 1px solid #f0d5bc;
+      border-radius: 11px;
+      background: #fff9f3;
+      color: #85430b;
+      font-size: 13px;
+      font-weight: 900;
+    }
+
+    .paste-vocabulary {
+      width: 100%;
+      height: 260px;
+      resize: none;
+      padding: 16px 18px;
+      border: 2px solid #efd9c4;
+      border-radius: 16px;
+      outline: none;
+      background: white;
+      color: #34251b;
+      font-family: "Noto Sans JP", system-ui, sans-serif;
+      font-size: 15px;
+      line-height: 1.7;
+      transition: .16s ease;
+    }
+
+    .paste-vocabulary:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 4px rgba(255,122,0,.08);
+    }
+
+    .paste-vocabulary::placeholder {
+      color: #b89b84;
+    }
+
+    @media (max-height: 760px) and (min-width: 701px) {
+      .dual-upload-card {
+        padding: 16px 20px;
+      }
+
+      .upload-mode-switch {
+        margin-bottom: 11px;
+      }
+
+      .paste-vocabulary {
+        height: 190px;
+      }
+    }
+
+    @media (max-width: 700px) {
+      .dual-upload-card {
+        padding: 13px;
+      }
+
+      .upload-mode-switch {
+        margin-bottom: 10px;
+      }
+
+      .upload-mode-btn {
+        min-height: 38px;
+        font-size: 11px;
+      }
+
+      .paste-format-example {
+        gap: 6px;
+        font-size: 11px;
+      }
+
+      .paste-vocabulary {
+        height: 190px;
+        padding: 12px 13px;
+        font-size: 13px;
+      }
+    }
+
   </style>
 </head>
 <body>
@@ -2929,18 +3074,58 @@
 
     <section id="upload" class="page">
 
-      <div class="card upload-card">
-        <label class="upload-drop" for="jsonFile">
-          <div class="upload-mark">JSON</div>
-          <strong>Pilih file soal</strong>
-          <span>Format utama: kanji, furigana, meaning atau arti</span>
-        </label>
+      <div class="card upload-card dual-upload-card">
+        <div class="upload-mode-switch" role="tablist" aria-label="Cara memasukkan soal">
+          <button id="uploadModeFile" class="upload-mode-btn active" type="button">
+            Upload JSON
+          </button>
+          <button id="uploadModePaste" class="upload-mode-btn" type="button">
+            Copy Paste
+          </button>
+        </div>
 
-        <input id="jsonFile" type="file" accept=".json,application/json" hidden />
+        <div id="fileUploadPanel" class="upload-panel active">
+          <label class="upload-drop" for="jsonFile">
+            <div class="upload-mark">JSON</div>
+            <strong>Pilih file soal</strong>
+            <span>kanji, furigana, arti</span>
+          </label>
 
-        <div id="selectedFile" class="upload-status">Belum ada file dipilih.</div>
+          <input id="jsonFile" type="file" accept=".json,application/json" hidden />
 
-        <button id="uploadButton" class="btn btn-primary upload-button">Upload Soal</button>
+          <div id="selectedFile" class="upload-status">Belum ada file dipilih.</div>
+
+          <button id="uploadButton" class="btn btn-primary upload-button">
+            Upload Soal
+          </button>
+        </div>
+
+        <div id="pasteUploadPanel" class="upload-panel">
+          <div class="paste-format-title">Format setiap baris</div>
+
+          <div class="paste-format-example">
+            <span>漢字</span>
+            <span>｜</span>
+            <span>ふりがな</span>
+            <span>｜</span>
+            <span>Arti</span>
+          </div>
+
+          <textarea
+            id="pasteVocabulary"
+            class="paste-vocabulary"
+            spellcheck="false"
+            placeholder="異なる,ことなる,berbeda&#10;果たした,はたした,menjalankan&#10;悔んで,くやんで,menyesal"
+          ></textarea>
+
+          <div id="pasteStatus" class="upload-status">
+            Satu kosakata per baris.
+          </div>
+
+          <button id="pasteButton" class="btn btn-primary upload-button">
+            Masukkan Soal
+          </button>
+        </div>
       </div>
     </section>
 
@@ -3090,7 +3275,7 @@
         $("kanjiDisplay").classList.remove("idle-motion", "anim-correct", "anim-wrong");
         applyMasteryVisual(0);
         $("answerReveal").innerHTML = "";
-        $("meaningDisplay").textContent = "Upload JSON untuk mulai";
+        $("meaningDisplay").textContent = "Tambahkan soal untuk mulai";
         $("answerInput").value = "";
         $("answerInput").disabled = true;
         $("answerInput").className = "answer-input";
@@ -3565,6 +3750,139 @@
     $("answerButton").addEventListener("click", checkAnswer);
 
 
+
+    function setUploadMode(mode) {
+      const fileMode = mode === "file";
+
+      $("uploadModeFile").classList.toggle("active", fileMode);
+      $("uploadModePaste").classList.toggle("active", !fileMode);
+
+      $("fileUploadPanel").classList.toggle("active", fileMode);
+      $("pasteUploadPanel").classList.toggle("active", !fileMode);
+
+      if (!fileMode) {
+        setTimeout(() => $("pasteVocabulary").focus(), 40);
+      }
+    }
+
+    $("uploadModeFile").addEventListener("click", () => setUploadMode("file"));
+    $("uploadModePaste").addEventListener("click", () => setUploadMode("paste"));
+
+    function parsePastedVocabularies(rawText) {
+      const text = String(rawText || "").trim();
+
+      if (!text) {
+        throw new Error("Tempel kosakata terlebih dahulu.");
+      }
+
+      // Jika pengguna menempel JSON, tetap boleh diproses.
+      try {
+        const parsed = JSON.parse(text);
+        const source = Array.isArray(parsed)
+          ? parsed
+          : Array.isArray(parsed?.vocabularies)
+            ? parsed.vocabularies
+            : null;
+
+        if (source) {
+          const normalized = normalizeVocabularyList(source);
+          if (!normalized.length) {
+            throw new Error("Tidak ditemukan data kanji, furigana, dan arti.");
+          }
+          return normalized;
+        }
+      } catch (error) {
+        // Bukan JSON. Lanjutkan sebagai format baris biasa.
+      }
+
+      const lines = text
+        .split(/\r?\n/)
+        .map(line => line.trim())
+        .filter(Boolean);
+
+      const result = [];
+      const invalidLines = [];
+
+      lines.forEach((line, index) => {
+        // Mendukung koma, pipe biasa, pipe Jepang, atau TAB dari spreadsheet.
+        let parts;
+
+        if (line.includes("\t")) {
+          parts = line.split(/\t+/);
+        } else {
+          parts = line.split(/[,|｜]/);
+        }
+
+        parts = parts.map(part => part.trim());
+
+        // Abaikan baris header seperti "Kanji | Furigana | Arti".
+        const headerText = parts.join(" ").toLowerCase();
+        if (
+          index === 0 &&
+          headerText.includes("kanji") &&
+          (headerText.includes("furigana") || headerText.includes("ふりがな"))
+        ) {
+          return;
+        }
+
+        if (parts.length < 3) {
+          invalidLines.push(index + 1);
+          return;
+        }
+
+        const kanji = parts[0];
+        const furigana = parts[1];
+        const meaning = parts.slice(2).join(" | ").trim();
+
+        if (!kanji || !furigana || !meaning) {
+          invalidLines.push(index + 1);
+          return;
+        }
+
+        result.push({ kanji, furigana, meaning });
+      });
+
+      if (invalidLines.length) {
+        throw new Error(
+          `Format baris ${invalidLines.slice(0, 5).join(", ")} belum sesuai.`
+        );
+      }
+
+      const normalized = normalizeVocabularyList(result);
+
+      if (!normalized.length) {
+        throw new Error("Tidak ditemukan kosakata yang valid.");
+      }
+
+      return normalized;
+    }
+
+    $("pasteButton").addEventListener("click", () => {
+      const status = $("pasteStatus");
+
+      try {
+        const normalized = parsePastedVocabularies(
+          $("pasteVocabulary").value
+        );
+
+        VOCABULARIES = normalized;
+        saveVocabularies();
+
+        currentIndex = pickNextIndex();
+        currentAttempt = 1;
+        answered = false;
+
+        renderStudy();
+        renderVocabularyPage($("searchInput").value);
+
+        status.textContent = `${VOCABULARIES.length} kosakata berhasil dimasukkan.`;
+        status.className = "upload-status good";
+      } catch (error) {
+        status.textContent = error.message;
+        status.className = "upload-status bad";
+      }
+    });
+
     let selectedJsonFile = null;
 
     $("jsonFile").addEventListener("change", event => {
@@ -3699,7 +4017,7 @@
       $("listCount").textContent = `${filtered.length} kata`;
 
       if (!filtered.length) {
-        $("vocabGrid").innerHTML = `<div class="card empty">${VOCABULARIES.length ? "Tidak ada kosakata yang cocok." : "Belum ada kosakata. Upload file JSON terlebih dahulu."}</div>`;
+        $("vocabGrid").innerHTML = `<div class="card empty">${VOCABULARIES.length ? "Tidak ada kosakata yang cocok." : "Belum ada kosakata. Tambahkan soal terlebih dahulu."}</div>`;
         return;
       }
 
