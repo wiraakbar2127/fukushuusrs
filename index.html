@@ -4189,6 +4189,12 @@
     $("answerInput").addEventListener("keydown", (event) => {
       if (event.key === "Enter") {
         event.preventDefault();
+
+        // Jangan biarkan Enter yang dipakai untuk mengecek jawaban
+        // ikut diterima listener Enter global. Jika tidak dihentikan,
+        // popup mastery akan terbuka lalu langsung tertutup pada event yang sama.
+        event.stopPropagation();
+
         checkAnswer();
       }
     });
