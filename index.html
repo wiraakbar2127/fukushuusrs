@@ -3100,9 +3100,575 @@
       to {transform:scale(1.15)}
     }
 
+
+/* ======================================================
+   V19 - COMPACT VOCAB TABLE + SRS 5 LEVEL
+   ====================================================== */
+
+#vocab .table-wrap {
+  width: min(100%, 980px);
+  margin: 0 auto;
+}
+
+#vocab .vocab-table {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+#vocab .vocab-table th,
+#vocab .vocab-table td {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+#vocab .table-kanji {
+  width: 18%;
+  min-width: 0;
+}
+
+#vocab .table-furigana {
+  width: 22%;
+  min-width: 0;
+}
+
+#vocab .table-meaning {
+  width: 28%;
+  min-width: 0;
+}
+
+#vocab .table-progress {
+  width: 12%;
+  min-width: 0;
+}
+
+#vocab .table-srs {
+  width: 10%;
+  text-align:center;
+  font-weight:900;
+  color:#b45a00;
+}
+
+#vocab .row-actions {
+  width:10%;
+}
+
+/* Badge SRS */
+.srs-badge {
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-width:42px;
+  padding:4px 8px;
+  border-radius:999px;
+  background:#fff0dd;
+  color:#a44e00;
+  font-size:11px;
+  font-weight:950;
+}
+
+.srs-level-0 {
+  background:#f4f4f4;
+  color:#777;
+}
+
+.srs-level-1 {
+  background:#fff1dc;
+}
+
+.srs-level-2 {
+  background:#ffe1b7;
+}
+
+.srs-level-3 {
+  background:#ffc982;
+}
+
+.srs-level-4 {
+  background:#ffab45;
+  color:#fff;
+}
+
+.srs-level-5 {
+  background:#ff7a00;
+  color:#fff;
+}
+
+/* SRS di latihan */
+.study-srs {
+  margin:6px auto 0;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:8px;
+  font-size:12px;
+  font-weight:900;
+  color:#9b6034;
+}
+
+.study-srs .srs-badge {
+  font-size:13px;
+}
+
+
+/* V20 - FIX ACTION BUTTON NOT COVERED */
+
+#vocab .table-wrap {
+  overflow-x: auto;
+  overflow-y: auto;
+}
+
+#vocab .vocab-table {
+  min-width: 900px;
+  table-layout: fixed;
+}
+
+#vocab .table-kanji {
+  width: 15%;
+}
+
+#vocab .table-furigana {
+  width: 20%;
+}
+
+#vocab .table-meaning {
+  width: 25%;
+}
+
+#vocab .table-progress {
+  width: 12%;
+}
+
+#vocab .table-srs {
+  width: 12%;
+}
+
+#vocab .row-actions {
+  width: 16%;
+  min-width: 130px;
+  display: flex;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: nowrap;
+}
+
+#vocab .row-btn {
+  flex: 0 0 auto;
+  min-width: 52px;
+  white-space: nowrap;
+  position: relative;
+  z-index: 2;
+}
+
+#vocab .vocab-table td:last-child {
+  overflow: visible;
+  text-align: center;
+}
+
+@media (max-width:700px){
+  #vocab .table-wrap {
+    overflow-x: auto;
+  }
+
+  #vocab .vocab-table {
+    min-width: 820px;
+  }
+
+  #vocab .row-actions {
+    min-width: 120px;
+  }
+}
+
+
+/* V21 - RESPONSIVE FLEXIBLE VOCAB TABLE */
+
+#vocab .table-wrap {
+  width: min(100%, 1000px);
+  margin: 0 auto;
+  overflow-x: auto;
+}
+
+#vocab .vocab-table {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+#vocab .vocab-table th,
+#vocab .vocab-table td {
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  transition: font-size .15s ease, padding .15s ease;
+}
+
+/* Proporsi otomatis */
+#vocab .table-kanji {
+  width: 14%;
+  font-size: clamp(16px, 2vw, 28px);
+}
+
+#vocab .table-furigana {
+  width: 20%;
+  font-size: clamp(11px, 1.3vw, 16px);
+}
+
+#vocab .table-meaning {
+  width: 25%;
+  font-size: clamp(11px, 1.3vw, 15px);
+}
+
+#vocab .table-progress {
+  width: 11%;
+  font-size: clamp(10px, 1.2vw, 14px);
+}
+
+#vocab .table-srs {
+  width: 12%;
+  font-size: clamp(10px, 1.2vw, 14px);
+}
+
+#vocab .row-actions {
+  width: 18%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: clamp(3px, .5vw, 8px);
+}
+
+#vocab .row-btn {
+  padding: clamp(5px, .6vw, 9px) clamp(6px, .9vw, 13px);
+  font-size: clamp(9px, 1.1vw, 12px);
+  min-width: auto;
+}
+
+/* Saat layar sempit, semua elemen mengecil bukan tertutup */
+@media (max-width: 900px) {
+  #vocab .vocab-table th,
+  #vocab .vocab-table td {
+    padding: 8px 6px;
+  }
+
+  #vocab .table-kanji {
+    font-size: 18px;
+  }
+
+  #vocab .row-actions {
+    gap: 3px;
+  }
+}
+
+@media (max-width: 700px) {
+  #vocab .vocab-table {
+    min-width: 650px;
+  }
+
+  #vocab .vocab-table th,
+  #vocab .vocab-table td {
+    padding: 7px 5px;
+  }
+}
+
+
+/* V22 - NO HORIZONTAL SCROLL + SMOOTH PAGE TRANSITION */
+
+/* Kumpulan kosakata wajib mengikuti lebar web */
+#vocab .table-wrap {
+  width: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#vocab .vocab-table {
+  width: 100%;
+  min-width: 0;
+  table-layout: fixed;
+}
+
+#vocab .vocab-table th,
+#vocab .vocab-table td {
+  white-space: normal;
+  word-break: break-word;
+  overflow-wrap: anywhere;
+  padding: 8px 6px;
+}
+
+/* pembagian ruang agar semua muat tanpa geser */
+#vocab .table-kanji {
+  width: 15%;
+  text-align:center;
+  font-size: clamp(16px, 2vw, 25px);
+}
+
+#vocab .table-furigana {
+  width: 20%;
+  font-size: clamp(10px, 1.2vw, 15px);
+}
+
+#vocab .table-meaning {
+  width: 25%;
+  font-size: clamp(10px, 1.2vw, 14px);
+}
+
+#vocab .table-progress {
+  width: 12%;
+  font-size: clamp(9px, 1vw, 13px);
+  text-align:center;
+}
+
+#vocab .table-srs {
+  width: 12%;
+  text-align:center;
+  font-size: clamp(9px, 1vw, 13px);
+}
+
+#vocab .row-actions {
+  width: 16%;
+  display:flex;
+  justify-content:center;
+  gap:4px;
+}
+
+#vocab .row-btn {
+  padding:5px 7px;
+  font-size:clamp(8px, 1vw, 11px);
+}
+
+/* PAGE TRANSITION */
+.page {
+  animation: pageFade .28s ease both;
+  transform-origin:center;
+}
+
+.page.page-enter {
+  animation: pageSlide .32s cubic-bezier(.2,.8,.2,1) both;
+}
+
+@keyframes pageFade {
+  from {
+    opacity:0;
+  }
+  to {
+    opacity:1;
+  }
+}
+
+@keyframes pageSlide {
+  from {
+    opacity:0;
+    transform:translateY(14px) scale(.985);
+  }
+  to {
+    opacity:1;
+    transform:translateY(0) scale(1);
+  }
+}
+
+.nav-btn {
+  transition:
+    transform .18s ease,
+    background .18s ease,
+    box-shadow .18s ease;
+}
+
+.nav-btn:active {
+  transform:scale(.95);
+}
+
+.nav-btn.active {
+  animation: navPop .22s ease;
+}
+
+@keyframes navPop {
+  from {
+    transform:scale(.94);
+  }
+  to {
+    transform:scale(1);
+  }
+}
+
+
+/* V23 - RESET CONFIRMATION */
+.reset-confirm-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 3000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(50,25,5,.25);
+  backdrop-filter: blur(4px);
+}
+
+.reset-confirm-modal.show {
+  display: flex;
+  animation: pageFade .2s ease;
+}
+
+.reset-confirm-box {
+  width: min(360px, 85vw);
+  padding: 24px;
+  border-radius: 22px;
+  background: white;
+  text-align: center;
+  box-shadow: 0 20px 50px rgba(90,40,0,.2);
+}
+
+.reset-confirm-title {
+  font-size: 18px;
+  font-weight: 950;
+  color: #7b3500;
+}
+
+.reset-confirm-text {
+  margin: 12px 0 20px;
+  font-size: 13px;
+  color: #765b45;
+}
+
+.reset-confirm-actions {
+  display:flex;
+  gap:10px;
+  justify-content:center;
+}
+
+.reset-confirm-actions button {
+  min-width:90px;
+  padding:10px 15px;
+  border-radius:12px;
+  border:0;
+  font-weight:900;
+  cursor:pointer;
+}
+
+.reset-no {
+  background:#eee;
+}
+
+.reset-yes {
+  background:#ff7a00;
+  color:white;
+}
+
+
+/* Mastery celebration animation */
+.mastery-celebration {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: none;
+  justify-content: center;
+  align-items: center;
+  background: rgba(255,245,230,.78);
+  backdrop-filter: blur(5px);
+}
+
+.mastery-celebration.show {
+  display:flex;
+  animation: masteryFade .25s ease;
+}
+
+.mastery-card {
+  position:relative;
+  width:min(380px,85vw);
+  padding:30px 24px;
+  text-align:center;
+  background:#fff;
+  border:2px solid #ffad52;
+  border-radius:25px;
+  box-shadow:0 20px 60px rgba(120,60,0,.2);
+  animation: masteryPop .4s ease;
+  overflow:hidden;
+}
+
+.mastery-kanji {
+  font-size:80px;
+  font-weight:900;
+  color:#ff7a00;
+  animation: masteryBounce .8s infinite alternate;
+}
+
+.mastery-title {
+  font-size:24px;
+  font-weight:950;
+  color:#7b3500;
+}
+
+.mastery-message {
+  margin-top:10px;
+  font-size:17px;
+  font-weight:800;
+}
+
+.mastery-small {
+  margin-top:8px;
+  color:#9a7350;
+}
+
+.mastery-close {
+  margin-top:18px;
+  font-size:12px;
+  color:#a58a70;
+}
+
+.confetti span {
+  position:absolute;
+  top:-20px;
+  width:9px;
+  height:16px;
+  background:#ff7a00;
+  animation: confettiFall 1.2s linear infinite;
+}
+
+.confetti span:nth-child(1){left:10%}
+.confetti span:nth-child(2){left:22%;animation-delay:.2s}
+.confetti span:nth-child(3){left:35%;animation-delay:.4s}
+.confetti span:nth-child(4){left:50%;animation-delay:.1s}
+.confetti span:nth-child(5){left:65%;animation-delay:.5s}
+.confetti span:nth-child(6){left:78%;animation-delay:.3s}
+.confetti span:nth-child(7){left:90%;animation-delay:.6s}
+.confetti span:nth-child(8){left:45%;animation-delay:.7s}
+
+@keyframes confettiFall {
+ from {transform:translateY(-20px) rotate(0);opacity:1}
+ to {transform:translateY(350px) rotate(500deg);opacity:0}
+}
+
+@keyframes masteryFade {
+ from {opacity:0}
+ to {opacity:1}
+}
+
+@keyframes masteryPop {
+ from {transform:scale(.7)}
+ to {transform:scale(1)}
+}
+
+@keyframes masteryBounce {
+ from {transform:scale(1)}
+ to {transform:scale(1.12)}
+}
+
 </style>
 </head>
 <body>
+<div id="resetConfirmModal" class="reset-confirm-modal">
+  <div class="reset-confirm-box">
+    <div class="reset-confirm-title">Reset Progress?</div>
+    <div class="reset-confirm-text">
+      Semua progress belajar, SRS, dan hitungan latihan akan dihapus.
+    </div>
+    <div class="reset-confirm-actions">
+      <button id="resetCancelBtn" class="reset-no">Batal</button>
+      <button id="resetConfirmBtn" class="reset-yes">Reset</button>
+    </div>
+  </div>
+</div>
+
+</body>
   <nav>
     <div class="nav-inner">
       <div class="brand">
@@ -3752,6 +4318,11 @@
 
         const newScore = Math.min(TARGET, score(vocab) + 1);
         progress[vocabKey(vocab)] = newScore;
+
+        if (newScore >= TARGET) {
+          setSRSLevel(vocab, getSRSLevel(vocab) + 1);
+        }
+
         saveProgress();
 
         $("feedback").textContent = "";
@@ -3815,6 +4386,9 @@
 
         const newScore = Math.max(0, score(vocab) - 1);
         progress[vocabKey(vocab)] = newScore;
+
+        setSRSLevel(vocab, Math.max(0, getSRSLevel(vocab) - 1));
+
         saveProgress();
 
         $("feedback").textContent = "";
@@ -3983,6 +4557,33 @@
       }
     });
 
+    
+    const SRS_INTERVALS = [
+      0,
+      1,
+      3,
+      7,
+      14,
+      30
+    ];
+
+    function getSRSLevel(vocab) {
+      return Number(vocab.srsLevel || 0);
+    }
+
+    function setSRSLevel(vocab, level) {
+      vocab.srsLevel = Math.min(5, Math.max(0, level));
+      vocab.nextReview = Date.now() + 
+        (SRS_INTERVALS[vocab.srsLevel] || 0) * 86400000;
+    }
+
+    function srsBadge(level) {
+      return `
+        <span class="srs-badge srs-level-${level}">
+          SRS ${level}/5
+        </span>`;
+    }
+
     let selectedJsonFile = null;
 
     $("jsonFile").addEventListener("change", event => {
@@ -4048,7 +4649,12 @@
         document.querySelectorAll(".nav-btn").forEach(x => x.classList.remove("active"));
         document.querySelectorAll(".page").forEach(x => x.classList.remove("active"));
         btn.classList.add("active");
-        $(btn.dataset.page).classList.add("active");
+
+        const targetPage = $(btn.dataset.page);
+        targetPage.classList.remove("page-enter");
+        void targetPage.offsetWidth;
+        targetPage.classList.add("page-enter");
+        targetPage.classList.add("active");
 
         if (btn.dataset.page === "study") {
           setTimeout(() => $("answerInput").focus(), 50);
@@ -4129,7 +4735,7 @@
                 <th>漢字</th>
                 <th>ふりがな</th>
                 <th>Arti</th>
-                <th>Progress</th>
+                <th>Progress</th><th>SRS</th>
                 <th></th>
               </tr>
             </thead>
@@ -4142,6 +4748,7 @@
                     <td class="table-furigana" title="${escapeHtml(v.furigana)}">${escapeHtml(v.furigana)}</td>
                     <td class="table-meaning" title="${escapeHtml(v.meaning)}">${escapeHtml(v.meaning)}</td>
                     <td class="table-progress">${s} / ${TARGET}</td>
+                    <td class="table-srs">${srsBadge(getSRSLevel(v))}</td>
                     <td>
                       <div class="row-actions">
                         <button class="row-btn edit" data-edit-index="${index}">Edit</button>
@@ -4248,13 +4855,14 @@
     });
 
     $("resetButton").addEventListener("click", () => {
-      if (!confirm("Reset seluruh progress latihan? Kosakata tetap aman.")) return;
-      progress = {};
-      saveProgress();
-      currentIndex = pickNextIndex();
-      currentAttempt = 1;
-      renderVocabularyPage($("searchInput").value);
-      renderStudy();
+      openResetConfirm(() => {
+        progress = {};
+        saveProgress();
+        currentIndex = pickNextIndex();
+        currentAttempt = 1;
+        renderVocabularyPage($("searchInput").value);
+        renderStudy();
+      });
     });
 
     function escapeHtml(text) {
@@ -4282,6 +4890,22 @@
     currentAttempt = 1;
     renderStudy();
     renderVocabularyPage();
-  </script>
+  
+document.querySelectorAll('[id*="reset"],[id*="Reset"]').forEach(btn => {
+  if (!btn.dataset.confirmResetAttached) {
+    btn.dataset.confirmResetAttached = "true";
+    const original = btn.onclick;
+    btn.onclick = function(e) {
+      e.preventDefault();
+      openResetConfirm(() => {
+        if (typeof original === "function") original.call(btn,e);
+      });
+    };
+  }
+});
+
+</script>
+
+
 </body>
 </html>
