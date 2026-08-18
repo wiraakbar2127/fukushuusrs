@@ -2960,6 +2960,174 @@
       color: #b89b84;
     }
 
+    .ai-instruction-wrap {
+      margin-bottom: 12px;
+    }
+
+    .ai-field-label {
+      display: block;
+      margin-bottom: 6px;
+      color: #7d5a40;
+      font-size: 12px;
+      font-weight: 900;
+    }
+
+    .ai-instruction {
+      width: 100%;
+      min-height: 74px;
+      resize: vertical;
+      padding: 11px 13px;
+      border: 1.5px solid #efd9c4;
+      border-radius: 12px;
+      outline: none;
+      background: #fff;
+      color: #34251b;
+      font: inherit;
+      font-size: 13px;
+      line-height: 1.55;
+    }
+
+    .ai-instruction:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 4px rgba(255,122,0,.08);
+    }
+
+    .ai-hint {
+      margin: 0 0 12px;
+      padding: 10px 12px;
+      border-radius: 12px;
+      background: #fff8f0;
+      color: #8d603f;
+      font-size: 12px;
+      line-height: 1.55;
+    }
+
+    .ai-review {
+      display: none;
+      margin-top: 16px;
+      padding-top: 15px;
+      border-top: 1px solid #f0dcc9;
+    }
+
+    .ai-review.show {
+      display: block;
+    }
+
+    .ai-review-head {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 9px;
+    }
+
+    .ai-review-title {
+      color: #6f472a;
+      font-size: 14px;
+      font-weight: 950;
+    }
+
+    .ai-review-count {
+      padding: 4px 9px;
+      border-radius: 999px;
+      background: #fff1e3;
+      color: #b15408;
+      font-size: 11px;
+      font-weight: 900;
+    }
+
+    .ai-review-table-wrap {
+      max-height: 290px;
+      overflow: auto;
+      border: 1px solid #edd8c4;
+      border-radius: 13px;
+      background: #fff;
+    }
+
+    .ai-review-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .ai-review-table th,
+    .ai-review-table td {
+      padding: 8px;
+      border-bottom: 1px solid #f2e4d7;
+      vertical-align: middle;
+    }
+
+    .ai-review-table th {
+      position: sticky;
+      top: 0;
+      z-index: 1;
+      background: #fff7ef;
+      color: #805433;
+      font-size: 11px;
+      font-weight: 950;
+      text-align: left;
+    }
+
+    .ai-review-table th:nth-child(1) { width: 27%; }
+    .ai-review-table th:nth-child(2) { width: 27%; }
+    .ai-review-table th:nth-child(3) { width: 38%; }
+    .ai-review-table th:nth-child(4) { width: 8%; text-align: center; }
+
+    .ai-cell-input {
+      width: 100%;
+      min-width: 0;
+      padding: 8px 9px;
+      border: 1px solid #ead6c3;
+      border-radius: 9px;
+      outline: none;
+      background: #fff;
+      color: #34251b;
+      font: inherit;
+      font-size: 12px;
+    }
+
+    .ai-cell-input:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 3px rgba(255,122,0,.08);
+    }
+
+    .ai-row-delete {
+      width: 30px;
+      height: 30px;
+      border: 0;
+      border-radius: 8px;
+      background: #fff1ef;
+      color: #c8493a;
+      font-weight: 950;
+      cursor: pointer;
+    }
+
+    .ai-review-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+    }
+
+    .ai-review-actions .btn {
+      flex: 1 1 170px;
+    }
+
+    .ai-loading {
+      opacity: .72;
+      pointer-events: none;
+    }
+
+    @media (max-width: 700px) {
+      .ai-review-table {
+        min-width: 610px;
+      }
+      .ai-instruction {
+        min-height: 68px;
+        font-size: 12px;
+      }
+    }
+
     @media (max-height: 760px) and (min-width: 701px) {
       .dual-upload-card {
         padding: 16px 20px;
@@ -2998,6 +3166,335 @@
         padding: 12px 13px;
         font-size: 13px;
       }
+    }
+
+
+    /* ======================================================
+       GPT TABLE WORKSPACE - ONE FILE / ONLINE AI
+       ====================================================== */
+    .gpt-workspace {
+      display: grid;
+      gap: 12px;
+    }
+
+    .gpt-topbar {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 10px;
+      padding: 11px 13px;
+      border: 1px solid #efd9c4;
+      border-radius: 14px;
+      background: linear-gradient(180deg, #fffaf5, #fff5ea);
+    }
+
+    .gpt-brand {
+      display: flex;
+      align-items: center;
+      gap: 9px;
+      min-width: 0;
+    }
+
+    .gpt-orb {
+      width: 34px;
+      height: 34px;
+      flex: 0 0 34px;
+      display: grid;
+      place-items: center;
+      border-radius: 11px;
+      color: white;
+      background: linear-gradient(135deg, #ff7a00, #ffb04f);
+      box-shadow: 0 7px 18px rgba(255,122,0,.20);
+      font-size: 17px;
+    }
+
+    .gpt-brand-text strong {
+      display: block;
+      color: #5f3c24;
+      font-size: 14px;
+      font-weight: 950;
+    }
+
+    .gpt-brand-text span {
+      display: block;
+      margin-top: 2px;
+      color: #a07d62;
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .gpt-net-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      white-space: nowrap;
+      color: #7d5a40;
+      font-size: 10px;
+      font-weight: 900;
+      user-select: none;
+    }
+
+    .gpt-net-toggle input {
+      accent-color: var(--orange);
+    }
+
+    .gpt-source {
+      width: 100%;
+      min-height: 108px;
+      max-height: 220px;
+      resize: vertical;
+      padding: 13px 14px;
+      border: 1.5px solid #efd9c4;
+      border-radius: 13px;
+      outline: none;
+      background: #fff;
+      color: #34251b;
+      font-family: "Noto Sans JP", system-ui, sans-serif;
+      font-size: 13px;
+      line-height: 1.65;
+    }
+
+    .gpt-source:focus,
+    .gpt-command:focus {
+      border-color: var(--orange);
+      box-shadow: 0 0 0 4px rgba(255,122,0,.08);
+    }
+
+    .gpt-command-row {
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 8px;
+      align-items: stretch;
+    }
+
+    .gpt-command {
+      width: 100%;
+      min-width: 0;
+      padding: 11px 13px;
+      border: 1.5px solid #efd9c4;
+      border-radius: 12px;
+      outline: none;
+      color: #34251b;
+      background: #fff;
+      font: inherit;
+      font-size: 12px;
+    }
+
+    .gpt-run-btn {
+      min-width: 132px;
+      border: 0;
+      border-radius: 12px;
+      padding: 0 15px;
+      color: #fff;
+      background: linear-gradient(135deg, var(--orange), var(--orange-2));
+      font: inherit;
+      font-size: 12px;
+      font-weight: 950;
+      cursor: pointer;
+      box-shadow: 0 7px 17px rgba(255,122,0,.18);
+    }
+
+    .gpt-run-btn:disabled {
+      opacity: .6;
+      cursor: wait;
+    }
+
+    .gpt-chips {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+    }
+
+    .gpt-chip {
+      border: 1px solid #efd4bb;
+      border-radius: 999px;
+      padding: 6px 9px;
+      color: #8d5d38;
+      background: #fff9f3;
+      font: inherit;
+      font-size: 10px;
+      font-weight: 850;
+      cursor: pointer;
+    }
+
+    .gpt-chip:hover {
+      border-color: #ffaf67;
+      background: #fff2e4;
+      color: #ad5108;
+    }
+
+    .gpt-status-line {
+      min-height: 28px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 6px 9px;
+      border-radius: 10px;
+      background: #fff9f4;
+      color: #8a684e;
+      font-size: 10px;
+      font-weight: 750;
+    }
+
+    .gpt-status-line.good {
+      background: #f2fbf5;
+      color: #2f7950;
+    }
+
+    .gpt-status-line.bad {
+      background: #fff2ef;
+      color: #b64f3f;
+    }
+
+    .gpt-status-mode {
+      flex: 0 0 auto;
+      padding: 3px 7px;
+      border-radius: 999px;
+      background: #fff0df;
+      color: #ae550c;
+      font-size: 9px;
+      font-weight: 950;
+    }
+
+    .gpt-table-shell {
+      border: 1px solid #edd8c4;
+      border-radius: 14px;
+      overflow: hidden;
+      background: #fff;
+    }
+
+    .gpt-table-headbar {
+      min-height: 42px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 8px;
+      padding: 8px 10px;
+      border-bottom: 1px solid #f0dece;
+      background: #fff8f1;
+    }
+
+    .gpt-table-title {
+      color: #6f472a;
+      font-size: 12px;
+      font-weight: 950;
+    }
+
+    .gpt-table-tools {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: flex-end;
+      gap: 5px;
+    }
+
+    .gpt-tool-btn {
+      border: 1px solid #ebd2ba;
+      border-radius: 8px;
+      padding: 5px 8px;
+      color: #815536;
+      background: #fff;
+      font: inherit;
+      font-size: 9px;
+      font-weight: 900;
+      cursor: pointer;
+    }
+
+    .gpt-table-wrap {
+      max-height: 330px;
+      overflow: auto;
+    }
+
+    .gpt-table {
+      width: 100%;
+      border-collapse: collapse;
+      table-layout: fixed;
+    }
+
+    .gpt-table th,
+    .gpt-table td {
+      padding: 7px;
+      border-bottom: 1px solid #f2e5d9;
+      vertical-align: middle;
+    }
+
+    .gpt-table th {
+      position: sticky;
+      top: 0;
+      z-index: 2;
+      color: #805433;
+      background: #fffaf5;
+      font-size: 10px;
+      font-weight: 950;
+      text-align: left;
+    }
+
+    .gpt-table th:nth-child(1) { width: 38px; text-align:center; }
+    .gpt-table th:nth-child(2) { width: 24%; }
+    .gpt-table th:nth-child(3) { width: 24%; }
+    .gpt-table th:nth-child(4) { width: 32%; }
+    .gpt-table th:nth-child(5) { width: 72px; }
+    .gpt-table th:nth-child(6) { width: 42px; text-align:center; }
+
+    .gpt-cell {
+      width: 100%;
+      min-width: 0;
+      padding: 7px 8px;
+      border: 1px solid transparent;
+      border-radius: 8px;
+      outline: none;
+      background: transparent;
+      color: #34251b;
+      font: inherit;
+      font-size: 11px;
+    }
+
+    .gpt-cell:hover { background: #fffaf6; }
+    .gpt-cell:focus {
+      border-color: #ffad62;
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(255,122,0,.07);
+    }
+
+    .gpt-select-row { accent-color: var(--orange); }
+
+    .gpt-delete {
+      width: 27px;
+      height: 27px;
+      border: 0;
+      border-radius: 8px;
+      background: #fff1ef;
+      color: #c8493a;
+      font-weight: 950;
+      cursor: pointer;
+    }
+
+    .gpt-footer-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .gpt-footer-actions .btn {
+      flex: 1 1 180px;
+    }
+
+    .gpt-empty {
+      padding: 22px 12px !important;
+      text-align: center;
+      color: #aa8970;
+      font-size: 11px;
+      line-height: 1.55;
+    }
+
+    @media (max-width:700px) {
+      .gpt-topbar { align-items:flex-start; }
+      .gpt-brand-text span { display:none; }
+      .gpt-command-row { grid-template-columns:1fr; }
+      .gpt-run-btn { min-height:42px; }
+      .gpt-table { min-width:720px; }
+      .gpt-table-wrap { max-height:310px; }
+      .gpt-source { min-height:94px; }
     }
 
   
@@ -3652,6 +4149,85 @@
  to {transform:scale(1.12)}
 }
 
+
+
+/* ===== AUTO COPY-PASTE VOCABULARY ===== */
+.auto-paste-card {
+  max-width: 760px;
+  margin: 0 auto;
+  padding: 28px;
+  border: 1px solid rgba(255,122,0,.16);
+  border-radius: 24px;
+  background: rgba(255,255,255,.9);
+  box-shadow: 0 18px 55px rgba(112,72,38,.08);
+}
+.auto-paste-icon {
+  width: 48px;
+  height: 48px;
+  display: grid;
+  place-items: center;
+  border-radius: 16px;
+  background: #fff2e6;
+  color: #ff7a00;
+  font-size: 23px;
+  margin-bottom: 14px;
+}
+.auto-paste-title { font-size: 24px; font-weight: 900; color: #2f241c; }
+.auto-paste-subtitle { margin-top: 7px; color: #7d6a5b; line-height: 1.65; font-size: 14px; }
+.auto-paste-label { display:block; margin: 22px 0 8px; color:#49382c; font-weight:800; font-size:13px; }
+.auto-paste-textarea {
+  width:100%; min-height:210px; resize:vertical; border:1.5px solid #eadfd4; border-radius:18px;
+  padding:18px; font:inherit; line-height:1.7; color:#2f241c; background:#fff; outline:none;
+  transition:border-color .18s ease, box-shadow .18s ease;
+}
+.auto-paste-textarea:focus { border-color:#ff9d47; box-shadow:0 0 0 4px rgba(255,122,0,.09); }
+.auto-paste-status { display:flex; align-items:center; gap:9px; min-height:24px; margin:12px 0 14px; color:#867366; font-size:13px; }
+.auto-paste-status.loading { color:#a86522; }
+.auto-paste-status.good { color:#377a4a; }
+.auto-paste-status.bad { color:#b34545; }
+.auto-paste-dot { width:8px; height:8px; border-radius:999px; background:currentColor; opacity:.75; flex:0 0 auto; }
+.auto-paste-status.loading .auto-paste-dot { animation:autoPulse .8s infinite alternate; }
+@keyframes autoPulse { to { transform:scale(1.7); opacity:.25; } }
+
+.paste-confirm-modal {
+  position:fixed; inset:0; z-index:9999; display:none; align-items:center; justify-content:center;
+  padding:20px; background:rgba(38,28,20,.48); backdrop-filter:blur(7px);
+}
+.paste-confirm-modal.show { display:flex; }
+.paste-confirm-dialog {
+  width:min(920px, 100%); max-height:min(86vh, 760px); overflow:hidden; display:flex; flex-direction:column;
+  background:#fffdfa; border:1px solid rgba(255,122,0,.18); border-radius:26px;
+  box-shadow:0 30px 90px rgba(39,27,18,.24);
+}
+.paste-confirm-head { display:flex; justify-content:space-between; gap:18px; padding:24px 26px 18px; border-bottom:1px solid #f0e5db; }
+.paste-confirm-kicker { font-size:11px; letter-spacing:.16em; color:#ff7a00; font-weight:900; }
+.paste-confirm-title { margin-top:5px; font-size:22px; color:#30231a; font-weight:900; }
+.paste-confirm-subtitle { margin-top:5px; color:#867467; font-size:13px; }
+.paste-confirm-close { border:0; background:#f7eee6; color:#705a49; width:38px; height:38px; border-radius:12px; font-size:24px; cursor:pointer; }
+.paste-confirm-table-wrap { overflow:auto; padding:0 22px; }
+.paste-confirm-table { width:100%; border-collapse:separate; border-spacing:0 10px; min-width:650px; }
+.paste-confirm-table th { padding:12px 10px 2px; text-align:left; color:#9a8473; font-size:11px; text-transform:uppercase; letter-spacing:.08em; }
+.paste-confirm-table th:last-child { width:46px; }
+.paste-confirm-table td { background:#fff; border-top:1px solid #efe4da; border-bottom:1px solid #efe4da; padding:7px; }
+.paste-confirm-table td:first-child { border-left:1px solid #efe4da; border-radius:13px 0 0 13px; }
+.paste-confirm-table td:last-child { border-right:1px solid #efe4da; border-radius:0 13px 13px 0; text-align:center; }
+.paste-confirm-input { width:100%; border:0; outline:0; background:transparent; padding:9px 8px; font:inherit; color:#2f241c; }
+.paste-confirm-input:focus { background:#fff7ef; border-radius:9px; }
+.paste-row-delete { width:32px; height:32px; border:0; border-radius:9px; cursor:pointer; background:#fff0ef; color:#c1534c; font-size:18px; }
+.paste-confirm-tools { display:flex; justify-content:space-between; align-items:center; padding:14px 26px; border-top:1px solid #f0e5db; color:#8d7969; font-size:13px; }
+.paste-confirm-actions { display:flex; justify-content:flex-end; gap:10px; padding:0 26px 24px; }
+@media (max-width: 700px) {
+  .auto-paste-card { padding:20px; border-radius:20px; }
+  .paste-confirm-modal { padding:10px; align-items:flex-end; }
+  .paste-confirm-dialog { max-height:92vh; border-radius:24px 24px 16px 16px; }
+  .paste-confirm-head { padding:20px 18px 15px; }
+  .paste-confirm-title { font-size:19px; }
+  .paste-confirm-table-wrap { padding:0 12px; }
+  .paste-confirm-tools { padding:12px 16px; }
+  .paste-confirm-actions { padding:0 16px 18px; flex-direction:column-reverse; }
+  .paste-confirm-actions .btn { width:100%; }
+}
+
 </style>
 </head>
 <body>
@@ -3681,7 +4257,7 @@
 
       <div class="nav-menu" aria-label="Navigasi">
         <button class="nav-btn active" data-page="study">復習</button>
-        <button class="nav-btn" data-page="upload">Upload JSON</button>
+        <button class="nav-btn" data-page="upload">Upload Soal</button>
         <button class="nav-btn" data-page="vocab">漢字一覧</button>
       </div>
     </div>
@@ -3767,33 +4343,75 @@
         </div>
 
         <div id="pasteUploadPanel" class="upload-panel">
-          <div class="paste-format-title">Format setiap baris</div>
+          <div class="auto-paste-card">
+            <div class="auto-paste-icon">✦</div>
+            <div class="auto-paste-title">Gemini Instant · Auto Pecah Kosakata</div>
+            <div class="auto-paste-subtitle">
+              Copy lalu paste kalimat atau kosakata target. Gemini langsung memisahkan kata Jepang, furigana, dan arti Indonesia, lalu membuka konfirmasi.
+            </div>
 
-          <div class="paste-format-example">
-            <span>漢字</span>
-            <span>｜</span>
-            <span>ふりがな</span>
-            <span>｜</span>
-            <span>Arti</span>
+            <label class="auto-paste-label" for="pasteVocabulary">Paste di sini</label>
+            <textarea
+              id="pasteVocabulary"
+              class="auto-paste-textarea"
+              spellcheck="false"
+              placeholder="Contoh:
+環境を改善することが必要です。
+
+Atau paste beberapa kosakata sekaligus."
+            ></textarea>
+
+            <div id="pasteStatus" class="auto-paste-status">
+              <span class="auto-paste-dot"></span>
+              <span id="autoPasteStatusText">Menunggu teks ditempel · Gemini siap dianalisis...</span>
+            </div>
+
+            <button id="pasteButton" class="btn btn-primary upload-button" type="button">
+              ✦ Analisis Ulang
+            </button>
           </div>
-
-          <textarea
-            id="pasteVocabulary"
-            class="paste-vocabulary"
-            spellcheck="false"
-            placeholder="異なる,ことなる,berbeda&#10;果たした,はたした,menjalankan&#10;悔んで,くやんで,menyesal"
-          ></textarea>
-
-          <div id="pasteStatus" class="upload-status">
-            Satu kosakata per baris.
-          </div>
-
-          <button id="pasteButton" class="btn btn-primary upload-button">
-            Masukkan Soal
-          </button>
         </div>
       </div>
     </section>
+
+
+
+    <div id="pasteConfirmModal" class="paste-confirm-modal" aria-hidden="true">
+      <div class="paste-confirm-dialog" role="dialog" aria-modal="true" aria-labelledby="pasteConfirmTitle">
+        <div class="paste-confirm-head">
+          <div>
+            <div class="paste-confirm-kicker">HASIL ANALISIS</div>
+            <div id="pasteConfirmTitle" class="paste-confirm-title">Apakah kosakatanya sudah benar?</div>
+            <div class="paste-confirm-subtitle">Klik langsung pada kolom untuk memperbaiki hasil yang belum tepat.</div>
+          </div>
+          <button id="closePasteConfirm" class="paste-confirm-close" type="button" aria-label="Tutup">×</button>
+        </div>
+
+        <div class="paste-confirm-table-wrap">
+          <table class="paste-confirm-table">
+            <thead>
+              <tr>
+                <th>Kanji / Jepang</th>
+                <th>Furigana</th>
+                <th>Arti</th>
+                <th></th>
+              </tr>
+            </thead>
+            <tbody id="pasteConfirmBody"></tbody>
+          </table>
+        </div>
+
+        <div class="paste-confirm-tools">
+          <button id="pasteAddRow" class="btn btn-ghost" type="button">+ Tambah Baris</button>
+          <span id="pasteConfirmCount">0 kosakata</span>
+        </div>
+
+        <div class="paste-confirm-actions">
+          <button id="pasteAnalyzeAgain" class="btn btn-ghost" type="button">✦ Analisis Ulang</button>
+          <button id="pasteConfirmSave" class="btn btn-primary" type="button">✓ Sudah Benar, Buat Soal</button>
+        </div>
+      </div>
+    </div>
 
     <section id="vocab" class="page">
       <div class="hero">
@@ -4392,122 +5010,347 @@
     $("uploadModeFile").addEventListener("click", () => setUploadMode("file"));
     $("uploadModePaste").addEventListener("click", () => setUploadMode("paste"));
 
-    function parsePastedVocabularies(rawText) {
-      const text = String(rawText || "").trim();
+    // Gemini Instant Copy-Paste Vocabulary Analyzer.
+    // Direct browser request for minimum latency. The API key is entered once, then kept only in this browser's localStorage.
+    const GEMINI_MODEL = "gemini-3.5-flash-lite";
+    const GEMINI_KEY_STORAGE = "wiraGeminiApiKeyV1";
+    let pasteDraftVocabularies = [];
+    let pasteAnalysisToken = 0;
+    let pasteAbortController = null;
 
-      if (!text) {
-        throw new Error("Tempel kosakata terlebih dahulu.");
-      }
-
-      // Jika pengguna menempel JSON, tetap boleh diproses.
-      try {
-        const parsed = JSON.parse(text);
-        const source = Array.isArray(parsed)
-          ? parsed
-          : Array.isArray(parsed?.vocabularies)
-            ? parsed.vocabularies
-            : null;
-
-        if (source) {
-          const normalized = normalizeVocabularyList(source);
-          if (!normalized.length) {
-            throw new Error("Tidak ditemukan data kanji, furigana, dan arti.");
-          }
-          return normalized;
-        }
-      } catch (error) {
-        // Bukan JSON. Lanjutkan sebagai format baris biasa.
-      }
-
-      const lines = text
-        .split(/\r?\n/)
-        .map(line => line.trim())
-        .filter(Boolean);
-
-      const result = [];
-      const invalidLines = [];
-
-      lines.forEach((line, index) => {
-        // Mendukung koma, pipe biasa, pipe Jepang, atau TAB dari spreadsheet.
-        let parts;
-
-        if (line.includes("\t")) {
-          parts = line.split(/\t+/);
-        } else {
-          parts = line.split(/[,|｜]/);
-        }
-
-        parts = parts.map(part => part.trim());
-
-        // Abaikan baris header seperti "Kanji | Furigana | Arti".
-        const headerText = parts.join(" ").toLowerCase();
-        if (
-          index === 0 &&
-          headerText.includes("kanji") &&
-          (headerText.includes("furigana") || headerText.includes("ふりがな"))
-        ) {
-          return;
-        }
-
-        if (parts.length < 3) {
-          invalidLines.push(index + 1);
-          return;
-        }
-
-        const kanji = parts[0];
-        const furigana = parts[1];
-        const meaning = parts.slice(2).join(" | ").trim();
-
-        if (!kanji || !furigana || !meaning) {
-          invalidLines.push(index + 1);
-          return;
-        }
-
-        result.push({ kanji, furigana, meaning });
-      });
-
-      if (invalidLines.length) {
-        throw new Error(
-          `Format baris ${invalidLines.slice(0, 5).join(", ")} belum sesuai.`
-        );
-      }
-
-      const normalized = normalizeVocabularyList(result);
-
-      if (!normalized.length) {
-        throw new Error("Tidak ditemukan kosakata yang valid.");
-      }
-
-      return normalized;
+    function getSavedGeminiKey() {
+      return String(localStorage.getItem(GEMINI_KEY_STORAGE) || "").trim();
     }
 
-    $("pasteButton").addEventListener("click", () => {
-      const status = $("pasteStatus");
+    function requestGeminiKey(force = false) {
+      if (!force) {
+        const existing = getSavedGeminiKey();
+        if (existing) return existing;
+      }
+
+      const key = String(prompt(
+        "Gemini API key diperlukan satu kali untuk analisis instan.\n\nMasukkan Gemini API key kamu. Key akan disimpan hanya di browser perangkat ini, jadi setelah ini tidak perlu memasukkannya lagi."
+      ) || "").trim();
+
+      if (!key) throw new Error("GEMINI_KEY_REQUIRED");
+      localStorage.setItem(GEMINI_KEY_STORAGE, key);
+      return key;
+    }
+
+    function forgetGeminiKey() {
+      localStorage.removeItem(GEMINI_KEY_STORAGE);
+    }
+
+    function autoEscapeHtml(value) {
+      return String(value ?? "")
+        .replaceAll("&", "&amp;")
+        .replaceAll("<", "&lt;")
+        .replaceAll(">", "&gt;")
+        .replaceAll('"', "&quot;")
+        .replaceAll("'", "&#039;");
+    }
+
+    function setAutoPasteStatus(message, type = "") {
+      const line = $("pasteStatus");
+      const text = $("autoPasteStatusText");
+      if (text) text.textContent = message;
+      if (line) line.className = `auto-paste-status${type ? ` ${type}` : ""}`;
+    }
+
+    function normalizeAutoRows(items) {
+      if (!Array.isArray(items)) return [];
+      const seen = new Set();
+      return items.map(item => ({
+        kanji: String(item?.kanji ?? item?.japanese ?? item?.word ?? "").trim(),
+        furigana: String(item?.furigana ?? item?.reading ?? item?.answer ?? "").trim(),
+        meaning: String(item?.meaning ?? item?.arti ?? item?.indonesian ?? "").trim()
+      })).filter(item => {
+        const key = `${item.kanji}|${item.furigana}|${item.meaning}`;
+        if (!item.kanji && !item.furigana && !item.meaning) return false;
+        if (seen.has(key)) return false;
+        seen.add(key);
+        return true;
+      });
+    }
+
+    function extractAutoJson(text) {
+      let cleaned = String(text ?? "").trim();
+      cleaned = cleaned.replace(/^```(?:json)?\s*/i, "").replace(/\s*```$/i, "").trim();
+      const tries = [cleaned];
+      const o1 = cleaned.indexOf("{");
+      const o2 = cleaned.lastIndexOf("}");
+      if (o1 >= 0 && o2 > o1) tries.push(cleaned.slice(o1, o2 + 1));
+      const a1 = cleaned.indexOf("[");
+      const a2 = cleaned.lastIndexOf("]");
+      if (a1 >= 0 && a2 > a1) tries.push(cleaned.slice(a1, a2 + 1));
+
+      for (const candidate of tries) {
+        try {
+          const parsed = JSON.parse(candidate);
+          if (Array.isArray(parsed)) return parsed;
+          if (Array.isArray(parsed?.vocabularies)) return parsed.vocabularies;
+          if (Array.isArray(parsed?.rows)) return parsed.rows;
+        } catch {}
+      }
+      throw new Error("Hasil AI tidak dapat dibaca.");
+    }
+
+    function buildAutoPastePrompt(text) {
+      return `Kamu adalah pemilah kosakata Bahasa Jepang untuk aplikasi belajar.\n\nTEKS YANG DI-PASTE USER:\n${text}\n\nTUGAS:\n1. Identifikasi kosakata Jepang yang menjadi isi utama teks tersebut.\n2. Jika user menempel daftar kosakata atau frasa per baris, pertahankan setiap item sebagai satu target dan jangan memecahnya secara berlebihan.\n3. Jika user menempel satu atau beberapa kalimat Jepang, ambil kata/frasa bermakna yang layak dipelajari. Abaikan partikel, tanda baca, angka biasa, dan kata fungsi yang tidak penting kecuali memang menjadi target jelas.\n4. Jangan menambahkan kosakata yang tidak berasal dari teks user.\n5. Isi furigana dengan hiragana sesuai pembacaan pada konteks tersebut.\n6. Isi arti Bahasa Indonesia secara singkat dan alami.\n7. Jika satu target sudah berupa hiragana/katakana tanpa kanji, tetap boleh dimasukkan di kolom kanji sebagai bentuk Jepang aslinya dan furigana diisi bacaannya.\n8. Jangan membuat duplikat.\n9. Kembalikan HANYA JSON valid, tanpa markdown atau penjelasan, dengan bentuk persis:\n{"vocabularies":[{"kanji":"環境","furigana":"かんきょう","meaning":"lingkungan"}]}`;
+    }
+
+    async function callAutoPasteAI(prompt) {
+      let apiKey = requestGeminiKey(false);
+
+      if (pasteAbortController) pasteAbortController.abort();
+      pasteAbortController = new AbortController();
+
+      const endpoint = `https://generativelanguage.googleapis.com/v1beta/models/${encodeURIComponent(GEMINI_MODEL)}:generateContent`;
+      const body = {
+        contents: [{
+          role: "user",
+          parts: [{ text: prompt }]
+        }],
+        generationConfig: {
+          responseMimeType: "application/json",
+          responseJsonSchema: {
+            type: "object",
+            properties: {
+              vocabularies: {
+                type: "array",
+                items: {
+                  type: "object",
+                  properties: {
+                    kanji: { type: "string" },
+                    furigana: { type: "string" },
+                    meaning: { type: "string" }
+                  },
+                  required: ["kanji", "furigana", "meaning"]
+                }
+              }
+            },
+            required: ["vocabularies"]
+          },
+          maxOutputTokens: 2400
+        }
+      };
+
+      async function send(key) {
+        return fetch(endpoint, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+            "x-goog-api-key": key
+          },
+          body: JSON.stringify(body),
+          signal: pasteAbortController.signal
+        });
+      }
+
+      let response = await send(apiKey);
+
+      // Invalid/expired key: remove it and allow one immediate retry with a new key.
+      if (response.status === 400 || response.status === 401 || response.status === 403) {
+        forgetGeminiKey();
+        apiKey = requestGeminiKey(true);
+        response = await send(apiKey);
+      }
+
+      if (!response.ok) {
+        let detail = "";
+        try {
+          const errorData = await response.json();
+          detail = errorData?.error?.message ? `: ${errorData.error.message}` : "";
+        } catch {}
+        throw new Error(`Gemini HTTP ${response.status}${detail}`);
+      }
+
+      const data = await response.json();
+      const content = (data?.candidates?.[0]?.content?.parts || [])
+        .map(part => part?.text || "")
+        .join("")
+        .trim();
+
+      if (!content) throw new Error("Gemini mengembalikan respons kosong.");
+      return content;
+    }
+
+    function localStructuredFallback(text) {
+      const rows = String(text || "").split(/\r?\n/).map(v => v.trim()).filter(Boolean);
+      const out = [];
+      for (const row of rows) {
+        const parts = row.split(/\t|\||｜|,|;/).map(v => v.trim()).filter(Boolean);
+        if (parts.length >= 3) {
+          out.push({ kanji: parts[0], furigana: parts[1], meaning: parts.slice(2).join(" ") });
+        }
+      }
+      return normalizeAutoRows(out);
+    }
+
+    function renderPasteConfirm() {
+      const body = $("pasteConfirmBody");
+      const count = $("pasteConfirmCount");
+      if (!body || !count) return;
+      count.textContent = `${pasteDraftVocabularies.length} kosakata`;
+
+      if (!pasteDraftVocabularies.length) {
+        body.innerHTML = `<tr><td colspan="4" style="padding:24px;text-align:center;color:#9b8879;">Belum ada hasil.</td></tr>`;
+        return;
+      }
+
+      body.innerHTML = pasteDraftVocabularies.map((item, index) => `
+        <tr data-paste-row="${index}">
+          <td><input class="paste-confirm-input" data-field="kanji" value="${autoEscapeHtml(item.kanji)}" aria-label="Kanji baris ${index + 1}"></td>
+          <td><input class="paste-confirm-input" data-field="furigana" value="${autoEscapeHtml(item.furigana)}" aria-label="Furigana baris ${index + 1}"></td>
+          <td><input class="paste-confirm-input" data-field="meaning" value="${autoEscapeHtml(item.meaning)}" aria-label="Arti baris ${index + 1}"></td>
+          <td><button class="paste-row-delete" data-delete-paste="${index}" type="button" aria-label="Hapus baris ${index + 1}">×</button></td>
+        </tr>
+      `).join("");
+    }
+
+    function syncPasteDraftFromModal() {
+      const rows = Array.from($("pasteConfirmBody")?.querySelectorAll("tr[data-paste-row]") || []);
+      pasteDraftVocabularies = rows.map(row => ({
+        kanji: row.querySelector('[data-field="kanji"]')?.value.trim() || "",
+        furigana: row.querySelector('[data-field="furigana"]')?.value.trim() || "",
+        meaning: row.querySelector('[data-field="meaning"]')?.value.trim() || ""
+      }));
+    }
+
+    function openPasteConfirm() {
+      renderPasteConfirm();
+      $("pasteConfirmModal")?.classList.add("show");
+      $("pasteConfirmModal")?.setAttribute("aria-hidden", "false");
+      document.body.style.overflow = "hidden";
+    }
+
+    function closePasteConfirm() {
+      $("pasteConfirmModal")?.classList.remove("show");
+      $("pasteConfirmModal")?.setAttribute("aria-hidden", "true");
+      document.body.style.overflow = "";
+    }
+
+    async function analyzeAutoPastedText(forcedText = null) {
+      const text = String(forcedText ?? $("pasteVocabulary")?.value ?? "").trim();
+      if (!text) {
+        setAutoPasteStatus("Paste kalimat atau kosakata terlebih dahulu.", "bad");
+        return;
+      }
+
+      const token = ++pasteAnalysisToken;
+      const button = $("pasteButton");
+      if (button) {
+        button.disabled = true;
+        button.textContent = "Menganalisis...";
+      }
+      setAutoPasteStatus("Gemini sedang memilah kanji, furigana, dan arti...", "loading");
 
       try {
-        const normalized = parsePastedVocabularies(
-          $("pasteVocabulary").value
-        );
-
-        VOCABULARIES = normalized;
-        saveVocabularies();
-
-        currentIndex = pickNextIndex();
-        currentAttempt = 1;
-        answered = false;
-
-        renderStudy();
-        renderVocabularyPage($("searchInput").value);
-
-        status.textContent = `${VOCABULARIES.length} kosakata berhasil dimasukkan.`;
-        status.className = "upload-status good";
+        const raw = await callAutoPasteAI(buildAutoPastePrompt(text));
+        if (token !== pasteAnalysisToken) return;
+        const rows = normalizeAutoRows(extractAutoJson(raw));
+        if (!rows.length) throw new Error("Tidak ada kosakata yang ditemukan.");
+        pasteDraftVocabularies = rows;
+        setAutoPasteStatus(`${rows.length} kosakata ditemukan. Silakan konfirmasi.`, "good");
+        openPasteConfirm();
       } catch (error) {
-        status.textContent = error.message;
-        status.className = "upload-status bad";
+        console.error("Auto paste analysis error:", error);
+        const fallback = localStructuredFallback(text);
+        if (fallback.length) {
+          pasteDraftVocabularies = fallback;
+          setAutoPasteStatus(`${fallback.length} baris berhasil dibaca. Silakan konfirmasi.`, "good");
+          openPasteConfirm();
+        } else {
+          if (String(error?.message || "").includes("GEMINI_KEY_REQUIRED")) {
+            setAutoPasteStatus("Gemini belum terhubung. Tekan Analisis Ulang lalu masukkan API key sekali saja.", "bad");
+          } else if (error?.name === "AbortError") {
+            // Request lama dibatalkan karena ada analisis yang lebih baru.
+          } else {
+            setAutoPasteStatus(`Gemini gagal menganalisis: ${String(error?.message || "coba lagi")}`, "bad");
+          }
+        }
+      } finally {
+        if (token === pasteAnalysisToken && button) {
+          button.disabled = false;
+          button.textContent = "✦ Analisis Ulang";
+        }
       }
+    }
+
+    // Inti fitur: setelah user melakukan PASTE, analisis berjalan otomatis tanpa perlu menekan tombol.
+    $("pasteVocabulary").addEventListener("paste", event => {
+      const pasted = event.clipboardData?.getData("text") ?? "";
+      if (!pasted.trim()) return;
+      setTimeout(() => analyzeAutoPastedText(), 20);
     });
 
-    
+    $("pasteButton").addEventListener("click", () => analyzeAutoPastedText());
+
+    // Jika suatu saat ingin mengganti key, klik dua kali pada baris status lalu jalankan analisis lagi.
+    $("pasteStatus")?.addEventListener("dblclick", () => {
+      forgetGeminiKey();
+      setAutoPasteStatus("Koneksi Gemini direset. Paste atau tekan Analisis Ulang untuk memasukkan key baru.", "");
+    });
+
+    $("closePasteConfirm").addEventListener("click", closePasteConfirm);
+    $("pasteConfirmModal").addEventListener("click", event => {
+      if (event.target === $("pasteConfirmModal")) closePasteConfirm();
+    });
+
+    $("pasteConfirmBody").addEventListener("input", () => {
+      syncPasteDraftFromModal();
+      $("pasteConfirmCount").textContent = `${pasteDraftVocabularies.length} kosakata`;
+    });
+
+    $("pasteConfirmBody").addEventListener("click", event => {
+      const btn = event.target.closest("[data-delete-paste]");
+      if (!btn) return;
+      syncPasteDraftFromModal();
+      const index = Number(btn.dataset.deletePaste);
+      pasteDraftVocabularies.splice(index, 1);
+      renderPasteConfirm();
+    });
+
+    $("pasteAddRow").addEventListener("click", () => {
+      syncPasteDraftFromModal();
+      pasteDraftVocabularies.push({ kanji: "", furigana: "", meaning: "" });
+      renderPasteConfirm();
+      requestAnimationFrame(() => {
+        const rows = $("pasteConfirmBody").querySelectorAll("tr[data-paste-row]");
+        rows[rows.length - 1]?.querySelector('[data-field="kanji"]')?.focus();
+      });
+    });
+
+    $("pasteAnalyzeAgain").addEventListener("click", () => {
+      closePasteConfirm();
+      analyzeAutoPastedText();
+    });
+
+    $("pasteConfirmSave").addEventListener("click", () => {
+      syncPasteDraftFromModal();
+      const normalized = normalizeVocabularyList(pasteDraftVocabularies);
+      if (!pasteDraftVocabularies.length) {
+        setAutoPasteStatus("Belum ada kosakata untuk dibuat menjadi soal.", "bad");
+        return;
+      }
+      if (normalized.length !== pasteDraftVocabularies.length) {
+        alert("Masih ada baris yang belum lengkap. Kanji/Jepang, furigana, dan arti harus terisi.");
+        return;
+      }
+
+      VOCABULARIES = normalized;
+      saveVocabularies();
+      progress = {};
+      saveProgress();
+      currentIndex = pickNextIndex();
+      currentAttempt = 1;
+      answered = false;
+      renderStudy();
+      renderVocabularyPage($("searchInput").value);
+      closePasteConfirm();
+      setAutoPasteStatus(`${VOCABULARIES.length} kosakata sudah menjadi soal.`, "good");
+      document.querySelector('[data-page="study"]')?.click();
+    });
     const SRS_INTERVALS = [
       0,
       1,
