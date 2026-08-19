@@ -5111,6 +5111,12 @@ Atau paste beberapa kosakata sekaligus."
       return Math.min(TOTAL_TARGET, (getSRSLevel(vocab) * TARGET) + score(vocab));
     }
 
+    function hasCompleted15(vocab) {
+      // Statistik "Selesai 15×" berarti minimal satu putaran 15/15 sudah selesai.
+      // SRS tetap berjalan sampai 5/5 secara terpisah.
+      return getSRSLevel(vocab) >= 1;
+    }
+
     function isFullyMastered(vocab) {
       return getSRSLevel(vocab) >= SRS_TARGET;
     }
@@ -5161,7 +5167,7 @@ Atau paste beberapa kosakata sekaligus."
         currentAttempt = 1;
       }
 
-      const mastered = VOCABULARIES.filter(isFullyMastered).length;
+      const mastered = VOCABULARIES.filter(hasCompleted15).length;
       $("totalStat").textContent = VOCABULARIES.length;
       $("masteredStat").textContent = mastered;
       $("remainingStat").textContent = VOCABULARIES.length - mastered;
@@ -5494,7 +5500,7 @@ Atau paste beberapa kosakata sekaligus."
         $("masteryBadge").textContent = `${visibleRoundScore} / ${TARGET}`;
         applyMasteryVisual(visibleRoundScore);
 
-        const mastered = VOCABULARIES.filter(isFullyMastered).length;
+        const mastered = VOCABULARIES.filter(hasCompleted15).length;
         $("masteredStat").textContent = mastered;
         $("remainingStat").textContent = VOCABULARIES.length - mastered;
 
@@ -5560,7 +5566,7 @@ Atau paste beberapa kosakata sekaligus."
         $("masteryBadge").textContent = `${newScore} / ${TARGET}`;
         applyMasteryVisual(newScore);
 
-        const mastered = VOCABULARIES.filter(isFullyMastered).length;
+        const mastered = VOCABULARIES.filter(hasCompleted15).length;
         $("masteredStat").textContent = mastered;
         $("remainingStat").textContent = VOCABULARIES.length - mastered;
 
